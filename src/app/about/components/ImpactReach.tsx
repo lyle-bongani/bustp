@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Unstable_Grid2 from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/Grid';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import GroupIcon from '@mui/icons-material/Group';
 import PublicIcon from '@mui/icons-material/Public';
@@ -19,17 +19,17 @@ export default function ImpactReach() {
             <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.2rem' }, color: '#E30613', mb: 4, textAlign: 'center' }}>
                 Impact & Reach
             </Typography>
-            <Unstable_Grid2 container spacing={4} justifyContent="center">
+            <Grid container={true} spacing={4} justifyContent="center">
                 {stats.map((stat, idx) => (
-                    <Unstable_Grid2 xs={12} sm={6} md={3} key={idx}>
+                    <Grid item={true} xs={12} sm={6} md={3} key={idx}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2 }}>
                             {stat.icon}
                             <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, color: '#E30613', fontSize: '1.5rem', mt: 1 }}>{stat.value}</Typography>
                             <Typography sx={{ fontFamily: 'Josefin Sans', color: '#222', fontSize: '1.08rem', mt: 0.5 }}>{stat.label}</Typography>
                         </Box>
-                    </Unstable_Grid2>
+                    </Grid>
                 ))}
-            </Unstable_Grid2>
+            </Grid>
         </Box>
     );
 } 
