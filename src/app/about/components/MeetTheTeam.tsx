@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
@@ -18,9 +17,9 @@ export default function MeetTheTeam() {
             <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.2rem' }, color: '#E30613', mb: 4, textAlign: 'center' }}>
                 Meet the Team
             </Typography>
-            <Grid container spacing={4} justifyContent="center">
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
                 {team.map((member, idx) => (
-                    <Grid item xs={12} sm={6} md={3} key={idx}>
+                    <Box key={idx} sx={{ flex: { xs: '1 1 100%', sm: '1 1 45%', md: '1 1 22%' }, minWidth: 220, maxWidth: 320, m: 1 }}>
                         <Card sx={{ borderRadius: 3, boxShadow: '0 2px 12px rgba(0,0,0,0.04)', p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                             <Avatar src={member.img} alt={member.name} sx={{ width: 80, height: 80, mb: 2 }} />
                             <CardContent sx={{ textAlign: 'center' }}>
@@ -29,9 +28,9 @@ export default function MeetTheTeam() {
                                 <Typography sx={{ fontFamily: 'Josefin Sans', color: '#222', fontSize: '0.98rem' }}>{member.bio}</Typography>
                             </CardContent>
                         </Card>
-                    </Grid>
+                    </Box>
                 ))}
-            </Grid>
+            </Box>
         </Box>
     );
 } 

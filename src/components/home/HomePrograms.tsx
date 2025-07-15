@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -7,6 +6,7 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import MovieIcon from '@mui/icons-material/Movie';
 import GroupsIcon from '@mui/icons-material/Groups';
 import CampaignIcon from '@mui/icons-material/Campaign';
+import Box from '@mui/material/Box';
 
 const programs = [
     {
@@ -40,9 +40,9 @@ export default function HomePrograms() {
             <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.15rem', color: '#222', mb: 4, maxWidth: 700, mx: 'auto' }}>
                 Explore our diverse range of programs and shows that entertain, educate, and inspire audiences across Zimbabwe and beyond.
             </Typography>
-            <Grid container spacing={3} justifyContent="center" sx={{ mb: 4 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4, mb: 4 }}>
                 {programs.map((prog, idx) => (
-                    <Grid item xs={12} sm={6} md={3} key={idx}>
+                    <Box key={idx} sx={{ flex: { xs: '1 1 100%', sm: '1 1 45%', md: '1 1 22%' }, minWidth: 220, maxWidth: 320, m: 1 }}>
                         <Card sx={{ borderRadius: 3, boxShadow: '0 2px 12px rgba(0,0,0,0.04)', p: 1, transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-6px)', boxShadow: '0 6px 24px rgba(227,6,19,0.08)' } }}>
                             <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
                                 {prog.icon}
@@ -50,9 +50,9 @@ export default function HomePrograms() {
                                 <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '0.98rem', color: '#222' }}>{prog.desc}</Typography>
                             </CardContent>
                         </Card>
-                    </Grid>
+                    </Box>
                 ))}
-            </Grid>
+            </Box>
             <Link href="/programs" style={{ color: '#E30613', fontWeight: 600, fontFamily: 'Josefin Sans', fontSize: '1.1rem', textDecoration: 'underline' }}>See programs</Link>
         </section>
     );

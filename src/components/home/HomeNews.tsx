@@ -1,6 +1,5 @@
 "use client";
 
-import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -48,8 +47,8 @@ export default function HomeNews() {
                         See More News
                     </Button>
                 </Box>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={9}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+                    <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '70%' } }}>
                         {news[0] && (
                             <Card sx={{ position: 'relative', borderRadius: 4, overflow: 'hidden', height: { xs: 400, md: 500 }, minHeight: 400, boxShadow: '0 4px 32px rgba(0,0,0,0.08)' }}>
                                 <Box sx={{ position: 'relative', width: '100%', height: { xs: 400, md: 500 }, minHeight: 400 }}>
@@ -72,8 +71,8 @@ export default function HomeNews() {
                                 </Box>
                             </Card>
                         )}
-                    </Grid>
-                    <Grid item xs={12} md={3}>
+                    </Box>
+                    <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '30%' } }}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
                             {news.slice(1, 4).map((item, idx) => (
                                 <Card key={idx} sx={{ display: 'flex', alignItems: 'center', borderRadius: 3, background: 'rgba(227,6,19,0.06)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', p: 1, minHeight: 90 }}>
@@ -97,8 +96,8 @@ export default function HomeNews() {
                                 </Card>
                             ))}
                         </Box>
-                    </Grid>
-                </Grid>
+                    </Box>
+                </Box>
             </Box>
         </section>
     );
