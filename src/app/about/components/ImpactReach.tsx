@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import GroupIcon from '@mui/icons-material/Group';
 import PublicIcon from '@mui/icons-material/Public';
@@ -19,17 +18,35 @@ export default function ImpactReach() {
             <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.2rem' }, color: '#E30613', mb: 4, textAlign: 'center' }}>
                 Impact & Reach
             </Typography>
-            <Grid container spacing={4} justifyContent="center">
+            <Box sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: 4,
+            }}>
                 {stats.map((stat, idx) => (
-                    <Grid item xs={12} sm={6} md={3} key={idx}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2 }}>
-                            {stat.icon}
-                            <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, color: '#E30613', fontSize: '1.5rem', mt: 1 }}>{stat.value}</Typography>
-                            <Typography sx={{ fontFamily: 'Josefin Sans', color: '#222', fontSize: '1.08rem', mt: 0.5 }}>{stat.label}</Typography>
-                        </Box>
-                    </Grid>
+                    <Box
+                        key={idx}
+                        sx={{
+                            flex: { xs: '1 1 100%', sm: '1 1 45%', md: '1 1 22%' },
+                            minWidth: 220,
+                            maxWidth: 320,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            p: 2,
+                            m: 1,
+                            background: '#fff',
+                            borderRadius: 4,
+                            boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
+                        }}
+                    >
+                        {stat.icon}
+                        <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, color: '#E30613', fontSize: '1.5rem', mt: 1 }}>{stat.value}</Typography>
+                        <Typography sx={{ fontFamily: 'Josefin Sans', color: '#222', fontSize: '1.08rem', mt: 0.5 }}>{stat.label}</Typography>
+                    </Box>
                 ))}
-            </Grid>
+            </Box>
         </Box>
     );
 } 
