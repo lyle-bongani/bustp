@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
-import Image from 'next/image';
 
 const Hero: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -12,7 +11,6 @@ const Hero: React.FC = () => {
         if (!video) return;
 
         let animationFrame: number;
-        let playing = true;
 
         const playForward = () => {
             video.playbackRate = 1;
@@ -59,7 +57,6 @@ const Hero: React.FC = () => {
         playForward();
 
         return () => {
-            playing = false;
             video.onended = null;
             video.ontimeupdate = null;
             cancelAnimationFrame(animationFrame);
@@ -107,7 +104,7 @@ const Hero: React.FC = () => {
                     Welcome to Bustop TV
                 </h1>
                 <p style={{ fontSize: 'clamp(1.1rem, 3vw, 2rem)', fontFamily: 'Josefin Sans', marginBottom: 32, lineHeight: 1.3 }}>
-                    Zimbabwe's #1 Satirical & Social Commentary Platform
+                    Zimbabwe&apos;s #1 Satirical & Social Commentary Platform
                 </p>
                 <a
                     href="#about"
