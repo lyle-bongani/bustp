@@ -11,7 +11,15 @@ import EventIcon from '@mui/icons-material/Event';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
 
-function CategoryTile({ icon, title, desc, color, textColor }) {
+interface CategoryTileProps {
+    icon: React.ReactNode;
+    title: string;
+    desc: string;
+    color: string;
+    textColor?: string;
+}
+
+function CategoryTile({ icon, title, desc, color, textColor }: CategoryTileProps) {
     return (
         <Box sx={{ background: color, color: textColor || '#fff', borderRadius: 4, p: 4, textAlign: 'center', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-6px)', boxShadow: '0 6px 24px rgba(0,0,0,0.13)' } }}>
             <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>{icon}</Box>

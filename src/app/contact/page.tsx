@@ -20,12 +20,12 @@ export default function ContactPage() {
     const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
     const [error, setError] = useState({ name: false, email: false, message: false });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
         setError({ ...error, [e.target.name]: false });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Simple validation
         const newError = {

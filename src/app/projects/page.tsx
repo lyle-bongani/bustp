@@ -17,7 +17,7 @@ async function getLatestProjects() {
         const text = await res.text();
         const parser = new Parser();
         const feed = await parser.parseString(text);
-        return feed.items.slice(0, 8).map(item => ({
+        return feed.items.slice(0, 8).map((item: any) => ({
             title: item.title,
             description: item.contentSnippet || '',
             image: (item.enclosure && item.enclosure.url) || '',
