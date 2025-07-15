@@ -51,13 +51,13 @@ export default function HomeAbout() {
                         About Bustop TV
                     </Typography>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.18rem', color: '#222', mb: 3 }}>
-                        Bustop TV is Zimbabwe’s leading digital satire and comedy platform, known for turning everyday life into powerful stories through humor. Since launching in 2014, we’ve been creating bold, thought-provoking skits, documentaries, and commentary that connect with audiences across Africa and beyond.
+                        Bustop TV is Zimbabwe&apos;s leading digital satire and comedy platform, known for turning everyday life into powerful stories through humor. Since launching in 2014, we&apos;ve been creating bold, thought-provoking skits, documentaries, and commentary that connect with audiences across Africa and beyond.
                     </Typography>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.08rem', color: '#444', mb: 3 }}>
-                        We use comedy as a lens to explore Zimbabwean culture, politics, and social issues—blending entertainment with awareness in a way that informs, inspires, and engages. Whether it's a viral street interview or a cleverly crafted sketch, Bustop TV delivers content that resonates, challenges, and entertains.
+                        We use comedy as a lens to explore Zimbabwean culture, politics, and social issues—blending entertainment with awareness in a way that informs, inspires, and engages. Whether it&apos;s a viral street interview or a cleverly crafted sketch, Bustop TV delivers content that resonates, challenges, and entertains.
                     </Typography>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.08rem', color: '#444', mb: 4 }}>
-                        With millions of views across YouTube, Facebook, and Instagram, Bustop TV is more than just comedy—it's a movement of voices speaking truth through laughter.
+                        With millions of views across YouTube, Facebook, and Instagram, Bustop TV is more than just comedy—it&apos;s a movement of voices speaking truth through laughter.
                     </Typography>
                     <Button
                         component={Link}

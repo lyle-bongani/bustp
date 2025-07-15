@@ -42,7 +42,7 @@ export default function HomeNews() {
             <Box sx={{ maxWidth: 1200, mx: 'auto', px: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
                     <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.2rem' }, color: '#E30613', letterSpacing: 1 }}>
-                        WHAT'S HAPPENING
+                        WHAT&apos;S HAPPENING
                     </Typography>
                     <Button href="https://bustop.tv" target="_blank" rel="noopener noreferrer" variant="contained" sx={{ background: '#E30613', color: '#fff', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', boxShadow: 'none', '&:hover': { background: '#FFD600', color: '#232526' } }}>
                         See More News
