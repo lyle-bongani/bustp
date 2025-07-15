@@ -24,7 +24,7 @@ export default function HeroSection() {
                     🎭 Bold Comedy. Sharp Commentary. Real Zimbabwe.
                 </Typography>
                 <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.18rem', color: '#fff', textShadow: '0 1px 8px #000', maxWidth: 700, mx: 'auto' }}>
-                    Bustop TV is where laughter meets truth. We tell Zimbabwe's stories—uncensored, unscripted, unforgettable.
+                    Bustop TV is where laughter meets truth. We tell Zimbabwe&apos;s stories—uncensored, unscripted, unforgettable.
                 </Typography>
             </Box>
         </Box>

@@ -1,9 +1,7 @@
 "use client";
 
-import Link from 'next/link';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -11,7 +9,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function HomeNews() {
-    const [news, setNews] = useState<any[]>([]);
+    const [news, setNews] = useState<Array<{ title: string; summary: string; image: string; date: string; }>>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 

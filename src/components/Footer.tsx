@@ -4,24 +4,26 @@ import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
     return (
         <Box component="footer" sx={{ backgroundColor: '#FFD700', color: '#222', py: 4, px: 2 }}>
             {/* Logo Row */}
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
-                <img src="/images/logos/Bustop TV Logo 311px.png" alt="Bustop TV Logo" style={{ height: 56, width: 'auto', display: 'block' }} />
+                <Image src="/images/logos/Bustop TV Logo 311px.png" alt="Bustop TV Logo" width={120} height={56} style={{ width: 'auto', display: 'block' }} />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'flex-start' }, gap: 4, maxWidth: 1200, mx: 'auto', mb: 2 }}>
                 {/* Quick Links */}
                 <Box sx={{ flex: 1, mb: { xs: 2, md: 0 } }}>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, mb: 1, color: '#E30613' }}>Quick Links</Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        <a href="/" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Home</a>
-                        <a href="/about" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>About</a>
-                        <a href="/awards" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Awards</a>
-                        <a href="/clients" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Clients</a>
-                        <a href="/contact" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Contact</a>
+                        <Link href="/" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Home</Link>
+                        <Link href="/about" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>About</Link>
+                        <Link href="/awards" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Awards</Link>
+                        <Link href="/clients" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Clients</Link>
+                        <Link href="/contact" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Contact</Link>
                     </Box>
                 </Box>
                 {/* Contact */}
@@ -40,9 +42,9 @@ export default function Footer() {
                 {/* Gallery View */}
                 <Box sx={{ flex: 1 }}>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, mb: 1, color: '#E30613' }}>Gallery View</Typography>
-                    <a href="/awards" style={{ display: 'inline-block', borderRadius: 8, overflow: 'hidden', border: '2px solid #E30613', width: 90, height: 60 }}>
-                        <img src="/images/pics/zimbabwe media wards.webp" alt="Awards Gallery" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    </a>
+                    <Link href="/awards" style={{ display: 'inline-block', borderRadius: 8, overflow: 'hidden', border: '2px solid #E30613', width: 90, height: 60 }}>
+                        <Image src="/images/pics/zimbabwe media wards.webp" alt="Awards Gallery" width={90} height={60} style={{ objectFit: 'cover', display: 'block' }} />
+                    </Link>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '0.95rem', mt: 1 }}>
                         <a href="/awards" style={{ color: '#E30613', textDecoration: 'underline' }}>View Awards Gallery</a>
                     </Typography>

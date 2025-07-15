@@ -44,7 +44,7 @@ export default function OurStory() {
                         As the platform expanded, it became a space for open dialogue, creative resistance, and storytelling that inspired a new generation of creators. Today, Bustop TV blends satire, documentary, and live performance to deliver content that is fresh, fearless, and impactful—reaching audiences across Africa and beyond.
                     </Typography>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 600, color: '#E30613', fontSize: '1.08rem', mb: 2 }}>
-                        The journey is far from over. We’re committed to pushing boundaries, amplifying new voices, and using comedy to inspire the next generation of Zimbabwean storytellers.
+                        The journey is far from over. We&apos;re committed to pushing boundaries, amplifying new voices, and using comedy to inspire the next generation of Zimbabwean storytellers.
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2, mb: 1 }}>
                         <Typography sx={{ fontFamily: 'Josefin Sans', fontStyle: 'italic', color: '#E30613', fontSize: '1.08rem' }}>

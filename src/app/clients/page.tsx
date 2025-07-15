@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
 
 export default function ClientsPage() {
     return (
@@ -42,7 +43,13 @@ export default function ClientsPage() {
                 </Box>
                 {/* Client image (restored) */}
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 5 }}>
-                    <img src="/images/pics/BusTop TV Clients 2.jpg" alt="Bustop TV Clients" style={{ borderRadius: 12, width: '100%', height: 'auto', background: '#fff', maxWidth: '1000px' }} />
+                    <Image
+                        src="/images/pics/BusTop TV Clients 2.jpg"
+                        alt="Bustop TV Clients"
+                        width={1000}
+                        height={600}
+                        style={{ borderRadius: 12, width: '100%', height: 'auto', background: '#fff' }}
+                    />
                 </Box>
                 {/* Combined Testimonial and Call to Action */}
                 <Box sx={{ bgcolor: '#FFD700', borderRadius: 0, p: { xs: 4, md: 5 }, mb: 0, width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', textAlign: 'center', mt: 8 }}>

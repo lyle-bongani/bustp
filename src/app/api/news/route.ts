@@ -40,7 +40,6 @@ export async function GET() {
         });
         const feed = await parser.parseURL('https://www.bustop.tv/feed/');
         const news = feed.items.slice(0, 8).map(item => {
-            // eslint-disable-next-line no-console
             console.log('NEWS ITEM:', JSON.stringify(item, null, 2));
             const image = findImageUrl(item);
             return {
@@ -53,7 +52,6 @@ export async function GET() {
         });
         return NextResponse.json(news);
     } catch (err) {
-        // eslint-disable-next-line no-console
         console.error('API ERROR:', err);
         return NextResponse.json({ error: err.message || 'Unknown error' }, { status: 500 });
     }

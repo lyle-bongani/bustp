@@ -9,12 +9,13 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import PublicIcon from '@mui/icons-material/Public';
 import MovieIcon from '@mui/icons-material/Movie';
+import Parser from 'rss-parser';
 
 async function getLatestProjects() {
     try {
         const res = await fetch('https://www.bustop.tv/feed/', { next: { revalidate: 3600 } });
         const text = await res.text();
-        const parser = new (require('rss-parser'))();
+        const parser = new Parser();
         const feed = await parser.parseString(text);
         return feed.items.slice(0, 8).map(item => ({
             title: item.title,
@@ -22,7 +23,7 @@ async function getLatestProjects() {
             image: (item.enclosure && item.enclosure.url) || '',
             link: item.link,
         }));
-    } catch (e) {
+    } catch {
         return null;
     }
 }
