@@ -17,6 +17,7 @@ async function getLatestProjects() {
         const text = await res.text();
         const parser = new Parser();
         const feed = await parser.parseString(text);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return feed.items.slice(0, 8).map((item: any) => ({
             title: item.title,
             description: item.contentSnippet || '',
