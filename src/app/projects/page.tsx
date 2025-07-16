@@ -174,7 +174,13 @@ export default async function ProjectsPage() {
     );
 }
 
-function FeatureCard({ icon, title, desc }) {
+interface FeatureCardProps {
+    icon: React.ReactNode;
+    title: string;
+    desc: string;
+}
+
+function FeatureCard({ icon, title, desc }: FeatureCardProps) {
     return (
         <Box sx={{ flex: 1, background: '#fff', borderRadius: 4, p: 4, boxShadow: '0 2px 12px rgba(0,0,0,0.07)', textAlign: 'center', minWidth: 200 }}>
             <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>{icon}</Box>

@@ -24,7 +24,7 @@ export default function ImpactReach() {
                 justifyContent: 'center',
                 gap: 4,
             }}>
-                {stats.map((stat, idx) => (
+                {stats.map((stat: { icon: React.ReactNode; label: string; value: string }, idx) => (
                     <Box
                         key={idx}
                         sx={{

@@ -34,7 +34,7 @@ export default function HomeProjects() {
                     Check out some of our most impactful and creative projects that have made a difference.
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: { xs: 2, sm: 4 }, overflowX: { xs: 'auto', md: 'visible' }, justifyContent: { xs: 'flex-start', md: 'center' }, mb: 2, px: { xs: 1, sm: 0 } }}>
-                    {projects.map((project, idx) => (
+                    {projects.map((project: { title: string; description: string; link: string }, idx) => (
                         <a
                             key={idx}
                             href={project.link}

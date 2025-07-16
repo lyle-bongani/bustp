@@ -41,7 +41,7 @@ export default function HomePrograms() {
                 Explore our diverse range of programs and shows that entertain, educate, and inspire audiences across Zimbabwe and beyond.
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4, mb: 4 }}>
-                {programs.map((prog, idx) => (
+                {programs.map((prog: { icon: React.ReactNode; title: string; desc: string }, idx) => (
                     <Box key={idx} sx={{ flex: { xs: '1 1 100%', sm: '1 1 45%', md: '1 1 22%' }, minWidth: 220, maxWidth: 320, m: 1 }}>
                         <Card sx={{ borderRadius: 3, boxShadow: '0 2px 12px rgba(0,0,0,0.04)', p: 1, transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-6px)', boxShadow: '0 6px 24px rgba(227,6,19,0.08)' } }}>
                             <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>

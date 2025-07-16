@@ -32,7 +32,7 @@ export default function WhatWeDo() {
                 We create content that entertains, educates, and provokes thought—using humor to break barriers and spark conversations. Our work blends satire, documentary, and real-life stories to reflect the Zimbabwean experience.
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
-                {items.map((item, idx) => (
+                {items.map((item: { icon: React.ReactNode; label: string; desc: string }, idx) => (
                     <Box key={idx} sx={{ flex: { xs: '1 1 100%', sm: '1 1 45%', md: '1 1 22%' }, minWidth: 220, maxWidth: 320, m: 1 }}>
                         <Card sx={{ borderRadius: 3, boxShadow: '0 2px 12px rgba(0,0,0,0.04)', p: 1, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                             <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
