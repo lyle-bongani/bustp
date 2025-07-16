@@ -29,7 +29,15 @@ function CategoryTile({ icon, title, desc, color, textColor }: CategoryTileProps
     );
 }
 
-function FeaturedProgram({ title, desc, img, reverse, infoDetails }) {
+interface FeaturedProgramProps {
+    title: string;
+    desc: string;
+    img: string;
+    reverse?: boolean;
+    infoDetails: Array<{ icon: React.ReactNode; text: string }>;
+}
+
+function FeaturedProgram({ title, desc, img, reverse, infoDetails }: FeaturedProgramProps) {
     return (
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: reverse ? 'row-reverse' : 'row' }, alignItems: 'center', gap: 4, mb: 6 }}>
             <Image src={img} alt={title} width={400} height={240} style={{ borderRadius: 12, objectFit: 'cover', width: '100%', maxWidth: 400, height: 240, background: '#fff' }} />
