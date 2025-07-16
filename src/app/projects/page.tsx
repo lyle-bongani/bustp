@@ -190,7 +190,13 @@ function FeatureCard({ icon, title, desc }: FeatureCardProps) {
     );
 }
 
-function NewsCard({ title, link, desc }) {
+interface NewsCardProps {
+    title: string;
+    link: string;
+    desc: string;
+}
+
+function NewsCard({ title, link, desc }: NewsCardProps) {
     return (
         <a href={link} target="_blank" rel="noopener noreferrer" style={{ minWidth: 320, maxWidth: 400, textDecoration: 'none', color: 'inherit', flex: '0 0 auto' }}>
             <Box sx={{ background: '#fff', borderRadius: 4, p: 3, boxShadow: '0 2px 12px rgba(0,0,0,0.07)', height: '100%' }}>
