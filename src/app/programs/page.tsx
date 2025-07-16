@@ -57,7 +57,12 @@ function FeaturedProgram({ title, desc, img, reverse, infoDetails }: FeaturedPro
     );
 }
 
-function UpcomingCard({ title, desc }) {
+interface UpcomingCardProps {
+    title: string;
+    desc: string;
+}
+
+function UpcomingCard({ title, desc }: UpcomingCardProps) {
     return (
         <Box sx={{ background: '#fff', color: '#E30613', borderRadius: 4, p: 4, textAlign: 'center', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', minWidth: 220, flex: 1 }}>
             <NewReleasesIcon sx={{ fontSize: 36, color: '#FFD700', mb: 1 }} />
