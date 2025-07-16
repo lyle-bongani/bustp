@@ -55,7 +55,10 @@ export async function GET() {
     } catch (err) {
         console.error('API ERROR:', err);
         let message = 'Unknown error';
-        if (err && typeof err === 'object' && 'message' in err && typeof (err as any).message === 'string') {
+        if (err && typeof err === 'object' && 'message' in err &&
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            typeof (err as any).message === 'string') {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             message = (err as any).message;
         }
         return NextResponse.json({ error: message }, { status: 500 });
