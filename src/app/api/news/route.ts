@@ -54,6 +54,10 @@ export async function GET() {
         return NextResponse.json(news);
     } catch (err) {
         console.error('API ERROR:', err);
-        return NextResponse.json({ error: err.message || 'Unknown error' }, { status: 500 });
+        let message = 'Unknown error';
+        if (err && typeof err === 'object' && 'message' in err && typeof (err as any).message === 'string') {
+            message = (err as any).message;
+        }
+        return NextResponse.json({ error: message }, { status: 500 });
     }
 } 
