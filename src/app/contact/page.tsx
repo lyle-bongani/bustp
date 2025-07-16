@@ -176,7 +176,7 @@ export default function ContactPage() {
                     width="100%"
                     height="400"
                     style={{ border: 0, borderRadius: 12 }}
-                    allowFullScreen=""
+                    allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Bustop TV Studio Map"
