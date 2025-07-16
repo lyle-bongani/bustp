@@ -37,8 +37,14 @@ export default function HomeNews() {
     // }
 
     return (
-        <section style={{ padding: '64px 0', background: '#fff', borderRadius: 24, margin: '32px 0' }}>
+        <section style={{ padding: '96px 0 64px 0', background: '#fff', borderRadius: 24, margin: '32px 0' }}>
             <Box sx={{ maxWidth: 1200, mx: 'auto', px: 2 }}>
+                <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2.2rem', md: '2.5rem' }, color: '#E30613', mb: 1, textAlign: 'center', letterSpacing: 1 }}>
+                    Latest News & Updates
+                </Typography>
+                <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.15rem', color: '#222', mb: 4, maxWidth: 700, mx: 'auto', textAlign: 'center' }}>
+                    Stay up to date with the latest stories, headlines, and happenings from Bustop TV and beyond.
+                </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
                     <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.2rem' }, color: '#E30613', letterSpacing: 1 }}>
                         WHAT&apos;S HAPPENING
