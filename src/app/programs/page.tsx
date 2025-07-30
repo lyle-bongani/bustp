@@ -1,199 +1,472 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Image from 'next/image';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
-import GroupsIcon from '@mui/icons-material/Groups';
-import MovieIcon from '@mui/icons-material/Movie';
-import VideocamIcon from '@mui/icons-material/Videocam';
-import EventIcon from '@mui/icons-material/Event';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import NewReleasesIcon from '@mui/icons-material/NewReleases';
+import React from 'react';
+import { Box, Typography, Button, Card, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, Chip, Container, Paper } from '@mui/material';
+import { EmojiEmotions, Newspaper, Groups, Movie, Videocam, Event, LocationOn, NewReleases, PlayArrow, LocalMovies, Mic, VideoLibrary, LiveTv, Gavel, Radio, PhotoCamera, ChevronLeft, ChevronRight, Campaign } from '@mui/icons-material';
 
-interface CategoryTileProps {
+interface ProgramCategoryProps {
+    title: string;
+    description: string;
     icon: React.ReactNode;
-    title: string;
-    desc: string;
     color: string;
-    textColor?: string;
+    videos: Array<{ id: string; title: string; description?: string; fullDescription?: string }>;
+    featuredVideo?: { id: string; title: string; description?: string; fullDescription?: string };
 }
 
-function CategoryTile({ icon, title, desc, color, textColor }: CategoryTileProps) {
+function ProgramCategory({ title, description, icon, color, videos, featuredVideo }: ProgramCategoryProps) {
+    const otherVideos = videos.filter(video => video.id !== featuredVideo?.id);
+    
     return (
-        <Box sx={{ background: color, color: textColor || '#fff', borderRadius: 4, p: 4, textAlign: 'center', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-6px)', boxShadow: '0 6px 24px rgba(0,0,0,0.13)' } }}>
-            <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>{icon}</Box>
-            <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: '1.15rem', mb: 0.5 }}>{title}</Typography>
-            <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1rem', opacity: 0.9 }}>{desc}</Typography>
-        </Box>
-    );
-}
-
-interface FeaturedProgramProps {
-    title: string;
-    desc: string;
-    img: string;
-    reverse?: boolean;
-    infoDetails: Array<{ icon: React.ReactNode; text: string }>;
-}
-
-function FeaturedProgram({ title, desc, img, reverse, infoDetails }: FeaturedProgramProps) {
-    return (
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: reverse ? 'row-reverse' : 'row' }, alignItems: 'center', gap: 4, mb: 6 }}>
-            <Image src={img} alt={title} width={400} height={240} style={{ borderRadius: 12, objectFit: 'cover', width: '100%', maxWidth: 400, height: 240, background: '#fff' }} />
-            <Box sx={{ flex: 1 }}>
-                <Typography variant="h3" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, color: '#E30613', mb: 1 }}>{title}</Typography>
-                <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.08rem', color: '#222', mb: 1 }}>{desc}</Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 2, mb: 1 }}>
-                    {infoDetails.map((item, idx) => (
-                        <Box key={idx} sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: '#FFD700', fontSize: '1rem', fontFamily: 'Josefin Sans' }}>
-                            {item.icon}
-                            <span style={{ color: '#FFD700', fontWeight: 700, marginLeft: 4 }}>{item.text}</span>
-                        </Box>
-                    ))}
+        <Box sx={{ mb: 12 }}>
+            {/* Category Header */}
+            <Box sx={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: 4, 
+                mb: 6,
+                borderBottom: '2px solid #E30613',
+                pb: 3
+            }}>
+                <Box sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center',
+                    p: 2,
+                    borderRadius: '50%',
+                    background: '#E30613',
+                    color: '#fff'
+                }}>
+                    {icon}
                 </Box>
+                <Box sx={{ flex: 1 }}>
+                    <Typography variant="h2" sx={{ 
+                        fontFamily: 'Josefin Sans', 
+                        fontWeight: 800, 
+                        color: '#E30613',
+                        fontSize: { xs: '2rem', md: '2.5rem' },
+                        mb: 1,
+                        letterSpacing: '0.02em'
+                    }}>
+                        {title}
+                    </Typography>
+                    <Typography sx={{ 
+                        fontFamily: 'Josefin Sans', 
+                        fontSize: '1.1rem', 
+                        color: '#555', 
+                        lineHeight: 1.6,
+                        maxWidth: '600px',
+                        fontWeight: 400
+                    }}>
+                        {description}
+                    </Typography>
+                </Box>
+                <Chip 
+                    label={`${videos.length} videos`} 
+                    size="small" 
+                    sx={{ 
+                        background: '#E30613', 
+                        color: '#fff', 
+                        fontFamily: 'Josefin Sans',
+                        fontWeight: 600,
+                        fontSize: '0.9rem'
+                    }} 
+                />
             </Box>
-        </Box>
-    );
-}
 
-interface UpcomingCardProps {
-    title: string;
-    desc: string;
-}
-
-function UpcomingCard({ title, desc }: UpcomingCardProps) {
-    return (
-        <Box sx={{ background: '#fff', color: '#E30613', borderRadius: 4, p: 4, textAlign: 'center', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', minWidth: 220, flex: 1 }}>
-            <NewReleasesIcon sx={{ fontSize: 36, color: '#FFD700', mb: 1 }} />
-            <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: '1.15rem', mb: 0.5 }}>{title}</Typography>
-            <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1rem', opacity: 0.9 }}>{desc}</Typography>
+            {/* Featured Video - Large */}
+            {featuredVideo && (
+                <Box sx={{ mb: 8 }}>
+                    <Typography sx={{ 
+                        fontFamily: 'Josefin Sans', 
+                        fontWeight: 700, 
+                        fontSize: '1rem', 
+                        color: '#E30613', 
+                        mb: 3,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em'
+                    }}>
+                        Featured
+                    </Typography>
+                    <Card sx={{ 
+                        background: 'linear-gradient(135deg, #fff 0%, #fafafa 100%)',
+                        borderRadius: 3,
+                        overflow: 'hidden',
+                        boxShadow: '0 8px 32px rgba(227, 6, 19, 0.15)',
+                        transition: 'all 0.4s ease',
+                        border: '2px solid #E30613',
+                        '&:hover': {
+                            transform: 'translateY(-8px)',
+                            boxShadow: '0 20px 40px rgba(227, 6, 19, 0.25)'
+                        }
+                    }}>
+                        <Box sx={{ position: 'relative' }}>
+                            <iframe 
+                                width="100%" 
+                                height="500" 
+                                src={`https://www.youtube.com/embed/${featuredVideo.id}`} 
+                                title={featuredVideo.title}
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowFullScreen
+                                style={{ borderRadius: '12px 12px 0 0' }}
+                            ></iframe>
+                            <Box sx={{
+                                position: 'absolute',
+                                top: 20,
+                                right: 20,
+                                background: '#E30613',
+                                color: '#fff',
+                                borderRadius: '50%',
+                                width: 56,
+                                height: 56,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: '0 4px 12px rgba(227, 6, 19, 0.4)'
+                            }}>
+                                <PlayArrow sx={{ fontSize: 28 }} />
+                            </Box>
+                        </Box>
+                        <Box sx={{ p: 5 }}>
+                            <Typography sx={{ 
+                                fontFamily: 'Josefin Sans', 
+                                fontWeight: 800, 
+                                fontSize: '1.8rem', 
+                                color: '#E30613', 
+                                mb: 3,
+                                lineHeight: 1.3
+                            }}>
+                                {featuredVideo.title}
+                            </Typography>
+                            {featuredVideo.description && (
+                                <Typography sx={{ 
+                                    fontFamily: 'Josefin Sans', 
+                                    fontSize: '1.1rem', 
+                                    color: '#555', 
+                                    lineHeight: 1.7,
+                                    fontWeight: 400
+                                }}>
+                                    {featuredVideo.description}
+                                </Typography>
+                            )}
+                        </Box>
+                    </Card>
+                </Box>
+            )}
+            
+            {/* Other Videos - Elegant Grid */}
+            {otherVideos.length > 0 && (
+                <Box>
+                    <Typography sx={{ 
+                        fontFamily: 'Josefin Sans', 
+                        fontWeight: 700, 
+                        fontSize: '1rem', 
+                        color: '#E30613', 
+                        mb: 4,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em'
+                    }}>
+                        More from {title}
+                    </Typography>
+                    <Box sx={{ 
+                        display: 'grid', 
+                        gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
+                        gap: 4
+                    }}>
+                        {otherVideos.map((video, index) => (
+                            <Card key={video.id} sx={{ 
+                                background: 'linear-gradient(135deg, #fff 0%, #fafafa 100%)',
+                                borderRadius: 3,
+                                overflow: 'hidden',
+                                boxShadow: '0 4px 20px rgba(227, 6, 19, 0.1)',
+                                transition: 'all 0.4s ease',
+                                border: '1px solid #E30613',
+                                '&:hover': {
+                                    transform: 'translateY(-6px)',
+                                    boxShadow: '0 12px 32px rgba(227, 6, 19, 0.2)'
+                                }
+                            }}>
+                                <Box sx={{ position: 'relative' }}>
+                                    <iframe 
+                                        width="100%" 
+                                        height="200" 
+                                        src={`https://www.youtube.com/embed/${video.id}`} 
+                                        title={video.title}
+                                        frameBorder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowFullScreen
+                                        style={{ borderRadius: '12px 12px 0 0' }}
+                                    ></iframe>
+                                    <Box sx={{
+                                        position: 'absolute',
+                                        top: 12,
+                                        right: 12,
+                                        background: '#E30613',
+                                        color: '#fff',
+                                        borderRadius: '50%',
+                                        width: 40,
+                                        height: 40,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 2px 8px rgba(227, 6, 19, 0.3)'
+                                    }}>
+                                        <PlayArrow sx={{ fontSize: 20 }} />
+                                    </Box>
+                                </Box>
+                                <Box sx={{ p: 4 }}>
+                                    <Typography sx={{ 
+                                        fontFamily: 'Josefin Sans', 
+                                        fontWeight: 700, 
+                                        fontSize: '1.2rem', 
+                                        color: '#E30613', 
+                                        mb: 2,
+                                        lineHeight: 1.3
+                                    }}>
+                                        {video.title}
+                                    </Typography>
+                                    {video.description && (
+                                        <Typography sx={{ 
+                                            fontFamily: 'Josefin Sans', 
+                                            fontSize: '0.95rem', 
+                                            color: '#666', 
+                                            lineHeight: 1.6,
+                                            fontWeight: 400
+                                        }}>
+                                            {video.description}
+                                        </Typography>
+                                    )}
+                                </Box>
+                            </Card>
+                        ))}
+                    </Box>
+                </Box>
+            )}
         </Box>
     );
 }
 
 export default function ProgramsPage() {
+    const programCategories = [
+        {
+            title: "Short Films",
+            description: "Cinematic narratives exploring Zimbabwean identity and social change.",
+            icon: <LocalMovies sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "aE2LbS7Jmwc", title: "Urban Migration", description: "A young professional navigates city life while maintaining rural connections.", fullDescription: "A powerful exploration of urban migration and the search for belonging in Harare's bustling streets. This film follows a young professional navigating the complexities of city life while maintaining connections to rural roots." },
+                { id: "27R5QJFp7Pc", title: "Family Bonds", description: "Multi-generational family dynamics in modern Zimbabwe.", fullDescription: "A touching story about family bonds and the generational gap in modern Zimbabwe. This narrative explores how traditional values adapt to contemporary challenges." },
+                { id: "ykYMGI9WldM", title: "Tradition & Modernity", description: "Examining the intersection of cultural heritage and progress.", fullDescription: "A thought-provoking piece examining the intersection of tradition and modernity in Zimbabwean society." },
+                { id: "ubjZw84LqMs", title: "Community Connection", description: "Celebrating resilience and solidarity in urban communities.", fullDescription: "A heartwarming tale of community and connection in urban Zimbabwe." }
+            ],
+            featuredVideo: { id: "aE2LbS7Jmwc", title: "Urban Migration", description: "A young professional navigates city life while maintaining rural connections.", fullDescription: "A powerful exploration of urban migration and the search for belonging in Harare's bustling streets." }
+        },
+        {
+            title: "Podcasts",
+            description: "Deep conversations on culture, politics, and society with diverse voices.",
+            icon: <Mic sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "0DbK5I39Rwg", title: "Youth Leadership", description: "Young leaders discuss Zimbabwe's future and national development.", fullDescription: "An in-depth discussion with youth leaders about Zimbabwe's future and the role of young people in shaping national development." },
+                { id: "tYUTCqQAZlY", title: "Digital Transformation", description: "Technology's impact on traditional businesses in Zimbabwe.", fullDescription: "Exploring the impact of technology on traditional businesses in Zimbabwe." },
+                { id: "wwP3WizY9pI", title: "Mental Health", description: "Candid conversations about mental health awareness.", fullDescription: "A candid conversation about mental health awareness in Zimbabwean communities." },
+                { id: "6SbSkFM6-sk", title: "Women's Leadership", description: "Examining women's roles in politics and business.", fullDescription: "Examining the role of women in Zimbabwean politics and business." },
+                { id: "ICjIoMt6UdI", title: "Art & Culture", description: "Celebrating Zimbabwean art and cultural preservation.", fullDescription: "A celebration of Zimbabwean art and culture, featuring interviews with local artists." },
+                { id: "6vw4rAVHkm4", title: "Community Innovation", description: "Technology transforming local communities.", fullDescription: "Exploring how technology and innovation are transforming local communities." }
+            ],
+            featuredVideo: { id: "0DbK5I39Rwg", title: "Youth Leadership", description: "Young leaders discuss Zimbabwe's future and national development.", fullDescription: "An in-depth discussion with youth leaders about Zimbabwe's future and the role of young people in shaping national development." }
+        },
+        {
+            title: "Documentaries",
+            description: "Authentic perspectives on the stories that shape our nation.",
+            icon: <VideoLibrary sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "Hn8Ir4URY8M", title: "Rural Life", description: "Comprehensive look at rural life and traditional practices.", fullDescription: "A comprehensive look at rural life and traditional practices in Zimbabwe." },
+                { id: "-lkX5PP8FU0", title: "Education System", description: "Examining education from primary schools to universities.", fullDescription: "Examining the state of education in Zimbabwe, from primary schools to universities." },
+                { id: "TENICwbXD0M", title: "Agriculture", description: "Deep dive into agricultural sector and food security.", fullDescription: "A deep dive into Zimbabwe's agricultural sector and food security challenges." },
+                { id: "ZAyGnY7Fa7g", title: "Traditional Healing", description: "Traditional healers in modern healthcare.", fullDescription: "Exploring the role of traditional healers in modern healthcare." },
+                { id: "2HEV9UAVmBw", title: "Mining Sector", description: "Mining's impact on local communities.", fullDescription: "A look at Zimbabwe's mining sector and its impact on local communities." },
+                { id: "u8ZTO61o_wM", title: "Healthcare", description: "Healthcare challenges and innovative solutions.", fullDescription: "Examining healthcare challenges and innovative solutions in Zimbabwe." },
+                { id: "XGBMSvkzlz4", title: "Education Innovation", description: "Creative approaches to learning and teaching.", fullDescription: "A celebration of education innovation in Zimbabwe." }
+            ],
+            featuredVideo: { id: "Hn8Ir4URY8M", title: "Rural Life", description: "Comprehensive look at rural life and traditional practices.", fullDescription: "A comprehensive look at rural life and traditional practices in Zimbabwe." }
+        },
+        {
+            title: "Web Series",
+            description: "Episodic content exploring contemporary themes with authentic perspectives.",
+            icon: <LiveTv sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "uW9UH1nJy54", title: "Pilot Episode", description: "Introducing characters and setting up central conflicts.", fullDescription: "The pilot episode that introduces our main characters and sets up the central conflict." },
+                { id: "QdSnQ-l4Hd4", title: "First Challenges", description: "Characters face their first major challenges.", fullDescription: "As the story unfolds, our characters face their first major challenges." },
+                { id: "CLr1NfIfmwI", title: "Secrets Revealed", description: "Plot thickens as secrets are revealed.", fullDescription: "The plot thickens as secrets are revealed and alliances shift." },
+                { id: "IVRu2mj_4QA", title: "Mid-Season Tensions", description: "Characters confront their pasts and make difficult decisions.", fullDescription: "Mid-season tensions reach their peak as characters confront their pasts." },
+                { id: "4u-tY5m2vhA", title: "Unexpected Turn", description: "Story takes an unexpected turn with new revelations.", fullDescription: "The story takes an unexpected turn as new information comes to light." },
+                { id: "LPQFwRm6_Ko", title: "Building to Finale", description: "Building towards the season finale.", fullDescription: "Building towards the season finale, this episode sets up the dramatic conclusion." },
+                { id: "b78Ng2iuWOI", title: "Season Finale", description: "The season finale brings all storylines together.", fullDescription: "The season finale brings all the storylines together in a satisfying conclusion." }
+            ],
+            featuredVideo: { id: "uW9UH1nJy54", title: "Pilot Episode", description: "Introducing characters and setting up central conflicts.", fullDescription: "The pilot episode that introduces our main characters and sets up the central conflict." }
+        },
+        {
+            title: "Comedy Skits",
+            description: "Hilarious takes on everyday situations that Zimbabweans can relate to.",
+            icon: <EmojiEmotions sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "WaGR0r95_jo", title: "Meeting the In-Laws", description: "Classic scenario with a Zimbabwean twist.", fullDescription: "A side-splitting take on the classic 'meeting the in-laws' scenario with a Zimbabwean twist." },
+                { id: "qg7CYNLbPj0", title: "Public Transport", description: "Challenges of public transportation in Harare.", fullDescription: "A hilarious look at the challenges of public transportation in Harare." },
+                { id: "Pc1fj3glVrw", title: "Social Media Culture", description: "Comedic exploration of social media culture.", fullDescription: "A comedic exploration of social media culture in Zimbabwe." },
+                { id: "8fysLIhQ3AU", title: "Family Drama", description: "Relatable family dynamics and conflicts.", fullDescription: "A relatable family drama that everyone can identify with." },
+                { id: "fVQE5B1sxqk", title: "Workplace Comedy", description: "Humor in office politics and relationships.", fullDescription: "A workplace comedy that highlights the humor in office politics." }
+            ],
+            featuredVideo: { id: "WaGR0r95_jo", title: "Meeting the In-Laws", description: "Classic scenario with a Zimbabwean twist.", fullDescription: "A side-splitting take on the classic 'meeting the in-laws' scenario with a Zimbabwean twist." }
+        },
+        {
+            title: "The Peoples Bus",
+            description: "Real conversations with everyday Zimbabweans on public transportation.",
+            icon: <LocationOn sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "UExj4EDDAeU", title: "Daily Life", description: "Real conversations about daily life, hopes, and dreams.", fullDescription: "Real conversations with commuters about daily life, hopes, and dreams." },
+                { id: "_S2gVXDmGsU", title: "Economic Challenges", description: "Exploring economic challenges and opportunities.", fullDescription: "Exploring the economic challenges and opportunities that Zimbabweans face." },
+                { id: "hGei0wlBBro", title: "Political Voices", description: "Voices of the people on current political issues.", fullDescription: "Voices of the people on current political and social issues." },
+                { id: "dnM25mim5FA", title: "Community Perspectives", description: "Community perspectives from different neighborhoods.", fullDescription: "Community perspectives and shared experiences from different neighborhoods." }
+            ],
+            featuredVideo: { id: "UExj4EDDAeU", title: "Daily Life", description: "Real conversations about daily life, hopes, and dreams.", fullDescription: "Real conversations with commuters about daily life, hopes, and dreams." }
+        },
+        {
+            title: "BustopTV News",
+            description: "Current events with a unique Bustop TV perspective and engaging storytelling.",
+            icon: <Newspaper sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "GjIRvADGXco", title: "Current Events", description: "Week's biggest stories with comedic twists.", fullDescription: "Current events with a comedic twist, covering the week's biggest stories." },
+                { id: "9dTxIn5fG90", title: "Investigative Reporting", description: "Deep dive into local issues that matter.", fullDescription: "Investigative reporting on local issues that matter to our community." },
+                { id: "eLtgfPRjcWg", title: "National Impact", description: "How national decisions affect local communities.", fullDescription: "Coverage of national events and their impact on local communities." },
+                { id: "_IW8o12AJsc", title: "Human Interest", description: "Stories highlighting resilience and creativity.", fullDescription: "Human interest stories that highlight the resilience and creativity of Zimbabweans." },
+                { id: "bIA75b8vaFY", title: "Cultural Events", description: "Celebrating Zimbabwean heritage and traditions.", fullDescription: "Cultural events and community highlights that showcase the rich diversity." },
+                { id: "mUZvGCzw7UI", title: "International News", description: "Global events with local Zimbabwean context.", fullDescription: "International news with local flavor, examining how global events impact Zimbabwe." }
+            ],
+            featuredVideo: { id: "GjIRvADGXco", title: "Current Events", description: "Week's biggest stories with comedic twists.", fullDescription: "Current events with a comedic twist, covering the week's biggest stories." }
+        },
+        {
+            title: "Traditional Courts Series",
+            description: "Exploring traditional justice systems in modern Zimbabwe.",
+            icon: <Gavel sx={{ fontSize: 28 }} />,
+            color: "#E30613",
+            videos: [
+                { id: "sbRqjvSh6vo", title: "Introduction", description: "Traditional justice systems and their role in society.", fullDescription: "Introduction to traditional justice systems and their role in Zimbabwean society." },
+                { id: "JPLH5wchfSo", title: "Family Disputes", description: "How traditional courts handle family and community conflicts.", fullDescription: "Examining how traditional courts handle family disputes and community conflicts." },
+                { id: "W6LMiUc-SIg", title: "Chiefs & Leaders", description: "Role of chiefs and traditional leaders in social order.", fullDescription: "The role of chiefs and traditional leaders in maintaining social order." },
+                { id: "-yvWlVZhWkQ", title: "Modern Challenges", description: "Traditional courts adapting to contemporary issues.", fullDescription: "Modern challenges facing traditional courts and their adaptation." },
+                { id: "yGtYF1r8E8k", title: "Women's Roles", description: "Women's contributions to traditional justice systems.", fullDescription: "Women's roles in traditional justice systems and their contributions." },
+                { id: "L8Dj3qVywvQ", title: "Future Integration", description: "Traditional and formal legal systems working together.", fullDescription: "The future of traditional courts and their integration with formal legal systems." }
+            ],
+            featuredVideo: { id: "sbRqjvSh6vo", title: "Introduction", description: "Traditional justice systems and their role in society.", fullDescription: "Introduction to traditional justice systems and their role in Zimbabwean society." }
+        }
+    ];
+
     return (
-        <main>
-            {/* 1. Hero Section (Banner Header) */}
-            <Box sx={{ width: '100%', minHeight: { xs: 320, md: 420 }, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', overflow: 'hidden', mb: 6 }}>
-                <video
-                    src="/videos/bustoptv-video.webm"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0, zIndex: 1, opacity: 0.7 }}
-                />
-                <Box sx={{ position: 'relative', zIndex: 2, textAlign: 'center', color: '#fff', width: '100%', py: { xs: 8, md: 12 }, px: 2 }}>
-                    <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.5rem' }, mb: 2, textShadow: '0 2px 12px #000' }}>
-                        🎬 The Stories That Move Zimbabwe
-                    </Typography>
-                    <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.18rem', color: '#fff', textShadow: '0 1px 8px #000', maxWidth: 700, mx: 'auto' }}>
-                        From political satire to everyday hustle — explore Bustop TV’s original programs that inform, entertain, and inspire.
-                    </Typography>
-                </Box>
+        <Box sx={{ 
+            background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)',
+            minHeight: '100vh'
+        }}>
+            {/* Hero Section */}
+            <Box sx={{ 
+                background: 'linear-gradient(135deg, #E30613 0%, #c4001d 100%)',
+                color: '#fff',
+                py: 12,
+                mb: 8
+            }}>
+                <Container maxWidth="lg">
+                    <Box sx={{ textAlign: 'center', maxWidth: '800px', mx: 'auto' }}>
+                        <Typography variant="h1" sx={{ 
+                            fontFamily: 'Josefin Sans', 
+                            fontWeight: 800, 
+                            fontSize: { xs: '3rem', md: '4rem' },
+                            mb: 4,
+                            letterSpacing: '0.02em',
+                            lineHeight: 1.2
+                        }}>
+                            Our Programs
+                        </Typography>
+                        <Typography sx={{ 
+                            fontFamily: 'Josefin Sans', 
+                            fontSize: '1.3rem', 
+                            color: '#f0f0f0', 
+                            lineHeight: 1.6,
+                            fontWeight: 400,
+                            mb: 6
+                        }}>
+                            Discover the diverse content that defines Bustop TV's unique voice in Zimbabwean media
+                        </Typography>
+                    </Box>
+                </Container>
             </Box>
 
-            {/* 2. Program Categories Overview */}
-            <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 8, px: 2 }}>
-                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: '1fr 1fr 1fr 1fr' }, gap: 4 }}>
-                    <CategoryTile icon={<EmojiEmotionsIcon sx={{ fontSize: 48 }} />} title="Comedy Skits" desc="Short, punchy, hilarious" color="#E30613" />
-                    <CategoryTile icon={<NewspaperIcon sx={{ fontSize: 48, color: '#E30613' }} />} title="Satirical News" desc="Politics meets parody" color="#FFD700" textColor="#E30613" />
-                    <CategoryTile icon={<GroupsIcon sx={{ fontSize: 48, color: '#FFD700' }} />} title="Street Interviews" desc="Real people, real talk" color="#222" />
-                    <CategoryTile icon={<MovieIcon sx={{ fontSize: 48, color: '#E30613' }} />} title="Short Docs" desc="Deep dives with a twist" color="#fff" textColor="#E30613" />
-                </Box>
-            </Box>
+            {/* Main Content */}
+            <Container maxWidth="lg" sx={{ pb: 12 }}>
+                {programCategories.map((category, index) => (
+                    <ProgramCategory
+                        key={index}
+                        title={category.title}
+                        description={category.description}
+                        icon={category.icon}
+                        color={category.color}
+                        videos={category.videos}
+                        featuredVideo={category.featuredVideo}
+                    />
+                ))}
+            </Container>
 
-            {/* 3. Featured Programs */}
-            <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 8, px: 2 }}>
-                <FeaturedProgram
-                    title="The Interview"
-                    desc="A man-on-the-street style show that puts real Zimbabweans on camera — honest, raw, and often hilarious."
-                    img="/images/pics/1358210.webp"
-                    reverse={false}
-                    infoDetails={[
-                        { icon: <VideocamIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Watch Now' },
-                        { icon: <EventIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Weekly' },
-                        { icon: <LocationOnIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Facebook, YouTube' },
-                    ]}
-                />
-                <FeaturedProgram
-                    title="The Skit Plug"
-                    desc="Satirical sketches that mock everyday life, politics, and the unexpected — from kombi dramas to relationship mishaps."
-                    img="/images/pics/BusTop TV Clients.webp"
-                    reverse={true}
-                    infoDetails={[
-                        { icon: <VideocamIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Watch Now' },
-                        { icon: <EventIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Twice Weekly' },
-                        { icon: <LocationOnIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'YouTube' },
-                    ]}
-                />
-                <FeaturedProgram
-                    title="Bustop Bulletins"
-                    desc="A fake news show that delivers real truths. Think headlines, but with heat."
-                    img="/images/pics/zimbabwe media wards.webp"
-                    reverse={false}
-                    infoDetails={[
-                        { icon: <VideocamIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Watch Now' },
-                        { icon: <EventIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Fridays' },
-                        { icon: <LocationOnIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Instagram Reels, TikTok' },
-                    ]}
-                />
-                <FeaturedProgram
-                    title="Real Talk"
-                    desc="Unscripted documentaries and commentary on social issues, protests, and the pulse of Zimbabwean youth."
-                    img="/images/pics/BusTop TV Clients 2.jpg"
-                    reverse={true}
-                    infoDetails={[
-                        { icon: <VideocamIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Watch Now' },
-                        { icon: <EventIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'Monthly' },
-                        { icon: <LocationOnIcon sx={{ fontSize: 20, color: '#FFD700' }} />, text: 'YouTube' },
-                    ]}
-                />
+            {/* Call to Action */}
+            <Box sx={{ 
+                background: 'linear-gradient(135deg, #E30613 0%, #c4001d 100%)',
+                color: '#fff',
+                py: 12,
+                mt: 12
+            }}>
+                <Container maxWidth="lg">
+                    <Box sx={{ textAlign: 'center', maxWidth: '600px', mx: 'auto' }}>
+                        <Typography variant="h2" sx={{ 
+                            fontFamily: 'Josefin Sans', 
+                            fontWeight: 800, 
+                            fontSize: { xs: '2.5rem', md: '3rem' },
+                            mb: 4,
+                            letterSpacing: '0.02em'
+                        }}>
+                            Stay Connected
+                        </Typography>
+                        <Typography sx={{ 
+                            fontFamily: 'Josefin Sans', 
+                            fontSize: '1.2rem', 
+                            color: '#f0f0f0', 
+                            lineHeight: 1.6,
+                            fontWeight: 400,
+                            mb: 6
+                        }}>
+                            Subscribe to our channel for the latest content and updates from Bustop TV
+                        </Typography>
+                        <Button 
+                            variant="outlined" 
+                            size="large"
+                            sx={{ 
+                                borderColor: '#fff', 
+                                color: '#fff',
+                                fontFamily: 'Josefin Sans',
+                                fontWeight: 600,
+                                fontSize: '1rem',
+                                px: 4,
+                                py: 2,
+                                '&:hover': {
+                                    borderColor: '#fff',
+                                    background: 'rgba(255,255,255,0.1)'
+                                }
+                            }}
+                        >
+                            Subscribe Now
+                        </Button>
+                    </Box>
+                </Container>
             </Box>
-
-            {/* 4. Behind the Scenes */}
-            <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 8, px: 2 }}>
-                <Typography variant="h4" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, color: '#E30613', mb: 2 }}>
-                    Behind the Scenes
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, alignItems: 'center' }}>
-                    <Image src="/images/pics/1358210.webp" alt="Behind the Scenes" width={320} height={200} style={{ borderRadius: 10, objectFit: 'cover', width: '100%', maxWidth: 320, height: 200, background: '#fff' }} />
-                    <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.08rem', color: '#222', maxWidth: 700 }}>
-                        At Bustop TV, every frame is homemade with hustle. Our writers, editors, and actors work as a family to bring you fresh content every week.
-                    </Typography>
-                </Box>
-            </Box>
-
-            {/* 5. Upcoming Series / What's Next */}
-            <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 8, px: 2 }}>
-                <Typography variant="h4" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, color: '#FFD700', mb: 2 }}>
-                    Coming Soon
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
-                    <UpcomingCard title="Campus Confessions" desc="University life like you’ve never seen it." />
-                    <UpcomingCard title="Zim Streets Uncut" desc="Gritty, real, and straight from the ground." />
-                </Box>
-            </Box>
-
-            {/* 6. Call to Action (CTA) */}
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
-                <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: '1.25rem', color: '#E30613', mb: 2 }}>
-                    Want more? Subscribe on YouTube, follow us on socials, or support us to keep the content alive.
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center', mb: 2 }}>
-                    <Button href="https://youtube.com/bustoptv" target="_blank" rel="noopener" variant="contained" sx={{ background: '#E30613', color: '#FFD700', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: '1.1rem', px: 4, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD700', color: '#E30613' } }}>
-                        Subscribe on YouTube
-                    </Button>
-                    <Button href="https://patreon.com/bustoptv" target="_blank" rel="noopener" variant="outlined" sx={{ borderColor: '#FFD700', color: '#FFD700', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: '1.1rem', px: 4, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD700', borderColor: '#FFD700', color: '#E30613' } }}>
-                        Become a Patron
-                    </Button>
-                    <Button href="https://instagram.com/bustoptv" target="_blank" rel="noopener" variant="outlined" sx={{ borderColor: '#E30613', color: '#E30613', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: '1.1rem', px: 4, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD700', borderColor: '#FFD700', color: '#E30613' } }}>
-                        Follow @BustopTV
-                    </Button>
-                </Box>
-            </Box>
-        </main>
+        </Box>
     );
 } 

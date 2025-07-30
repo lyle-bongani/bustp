@@ -5,7 +5,6 @@ import HomeClients from "../components/home/HomeClients";
 import HomeContact from "../components/home/HomeContact";
 import HomeNews from "../components/home/HomeNews";
 import HomePrograms from "../components/home/HomePrograms";
-import HomeProjects from "../components/home/HomeProjects";
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
       <HomeClients />
       <HomePrograms />
       <HomeNews />
-      <HomeProjects />
       <HomeContact />
       {/* Optionally, keep or remove the old content below */}
     </>
