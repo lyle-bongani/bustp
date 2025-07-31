@@ -3,9 +3,7 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import MovieIcon from '@mui/icons-material/Movie';
-import SearchIcon from '@mui/icons-material/Search';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
 import MicIcon from '@mui/icons-material/Mic';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
@@ -115,7 +113,7 @@ export default function WhatWeDo() {
                 ))}
             </Box>
             <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.08rem', color: '#444', mt: 4, textAlign: 'center', maxWidth: 700, mx: 'auto' }}>
-                Whether it's a viral skit or a powerful interview, Bustop TV's content inspires laughter, dialogue, and change across generations.
+                Whether it&apos;s a viral skit or a powerful interview, Bustop TV&apos;s content inspires laughter, dialogue, and change across generations.
             </Typography>
         </Box>
     );

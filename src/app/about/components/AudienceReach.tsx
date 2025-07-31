@@ -20,12 +20,12 @@ export default function AudienceReach() {
         { icon: <Public />, title: 'Marginalised groups', desc: 'People living with disabilities, LGBTQI+ community, rural and remote communities.' }
     ];
 
-    const impactStats = [
-        { icon: <TrendingUp />, number: '1M+', label: 'reach', desc: 'Local and abroad Zimbabweans engaging with our content.', percentage: 100 },
-        { icon: <Visibility />, number: '46M+', label: 'YouTube views', desc: 'Accumulated views across our channel to date.', percentage: 85 },
-        { icon: <Subscriptions />, number: '100K+', label: 'subscribers', desc: 'YouTube Creator Awards recipient for reaching this milestone.', percentage: 70 },
-        { icon: <Public />, number: '5', label: 'top countries', desc: 'South Africa, Botswana, UK, Mozambique, Zimbabwe.', percentage: 60 }
-    ];
+    // const impactStats = [
+    //     { icon: <TrendingUp />, number: '1M+', label: 'reach', desc: 'Local and abroad Zimbabweans engaging with our content.', percentage: 100 },
+    //     { icon: <Visibility />, number: '46M+', label: 'YouTube views', desc: 'Accumulated views across our channel to date.', percentage: 85 },
+    //     { icon: <Subscriptions />, number: '100K+', label: 'subscribers', desc: 'YouTube Creator Awards recipient for reaching this milestone.', percentage: 70 },
+    //     { icon: <Public />, number: '5', label: 'top countries', desc: 'South Africa, Botswana, UK, Mozambique, Zimbabwe.', percentage: 60 }
+    // ];
 
     return (
         <Box component="section" sx={{ 

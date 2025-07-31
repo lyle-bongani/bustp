@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Box, Typography, Button, Card, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, Chip, Container, Paper, ImageList, ImageListItem, Modal, Fade } from '@mui/material';
-import { EmojiEmotions, Newspaper, Groups, Movie, Videocam, Event, LocationOn, NewReleases, PlayArrow, LocalMovies, Mic, VideoLibrary, LiveTv, Gavel, Radio, PhotoCamera, ChevronLeft, ChevronRight, Campaign, Close } from '@mui/icons-material';
+import { Box, Typography, Button, Card, IconButton, Chip, Container, Modal, Fade } from '@mui/material';
+import { EmojiEmotions, Newspaper, LocationOn, PlayArrow, LocalMovies, Mic, VideoLibrary, LiveTv, Gavel, PhotoCamera, Close } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ interface ProgramCategoryProps {
     featuredVideo?: { id: string; title: string; description?: string; fullDescription?: string };
 }
 
-function ProgramCategory({ title, description, icon, color, videos, featuredVideo }: ProgramCategoryProps) {
+function ProgramCategory({ title, description, icon, videos, featuredVideo }: ProgramCategoryProps) {
     const otherVideos = videos.filter(video => video.id !== featuredVideo?.id);
     
     // Create section ID from title
@@ -413,7 +413,7 @@ export default function ProgramsPage() {
                             fontWeight: 400,
                             mb: 6
                         }}>
-                            Discover the diverse content that defines Bustop TV's unique voice in Zimbabwean media
+                            Discover the diverse content that defines Bustop TV&apos;s unique voice in Zimbabwean media
                     </Typography>
                 </Box>
                 </Container>

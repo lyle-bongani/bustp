@@ -5,11 +5,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import MovieIcon from '@mui/icons-material/Movie';
 import GroupsIcon from '@mui/icons-material/Groups';
-import CampaignIcon from '@mui/icons-material/Campaign';
 import Box from '@mui/material/Box';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import MicIcon from '@mui/icons-material/Mic';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
@@ -292,7 +289,7 @@ export default function HomePrograms() {
                 </Typography>
                 
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, justifyContent: 'center' }}>
-                    {featuredVideos.map((video, index) => (
+                    {featuredVideos.map((video) => (
                         <Box key={video.id} sx={{ flex: '1 1 280px', minWidth: 280, maxWidth: 400 }}>
                             <Box sx={{ position: 'relative', mb: 2 }}>
                                 <iframe 

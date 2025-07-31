@@ -2,7 +2,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { People, Groups, Person } from '@mui/icons-material';
+import { Person } from '@mui/icons-material';
 
 export default function MeetTheTeam() {
     // Actual team data
@@ -105,7 +105,7 @@ export default function MeetTheTeam() {
                     maxWidth: 600,
                     mx: 'auto'
                 }}>
-                    The passionate individuals behind Bustop TV's mission to amplify voices and tell authentic stories
+                                            The passionate individuals behind Bustop TV&apos;s mission to amplify voices and tell authentic stories
                 </Typography>
 
                 {/* Team Members Grid */}

@@ -399,7 +399,7 @@ export default function GalleryPage() {
                         mb: 3,
                         letterSpacing: '0.05em'
                     }}>
-                        "Photography is the art of observation"
+                        &quot;Photography is the art of observation&quot;
                     </Typography>
                     <Typography sx={{ 
                         fontFamily: 'Josefin Sans', 
