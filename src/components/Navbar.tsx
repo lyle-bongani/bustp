@@ -19,12 +19,12 @@ import { useState } from 'react';
 const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
+    { label: 'Programs', href: '/programs' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Awards', href: '/awards' },
     { label: 'Clients', href: '/clients' },
-    { label: 'Contact', href: '/contact' },
     { label: 'News', href: 'https://bustop.tv', external: true },
-    { label: 'Programs', href: '/programs' },
-    { label: 'Projects', href: '/projects' },
+    { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

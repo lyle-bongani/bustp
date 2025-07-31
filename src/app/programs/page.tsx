@@ -1,6 +1,10 @@
-import React from 'react';
-import { Box, Typography, Button, Card, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, Chip, Container, Paper } from '@mui/material';
-import { EmojiEmotions, Newspaper, Groups, Movie, Videocam, Event, LocationOn, NewReleases, PlayArrow, LocalMovies, Mic, VideoLibrary, LiveTv, Gavel, Radio, PhotoCamera, ChevronLeft, ChevronRight, Campaign } from '@mui/icons-material';
+"use client";
+
+import React, { useState } from 'react';
+import { Box, Typography, Button, Card, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, Chip, Container, Paper, ImageList, ImageListItem, Modal, Fade } from '@mui/material';
+import { EmojiEmotions, Newspaper, Groups, Movie, Videocam, Event, LocationOn, NewReleases, PlayArrow, LocalMovies, Mic, VideoLibrary, LiveTv, Gavel, Radio, PhotoCamera, ChevronLeft, ChevronRight, Campaign, Close } from '@mui/icons-material';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface ProgramCategoryProps {
     title: string;
@@ -14,8 +18,11 @@ interface ProgramCategoryProps {
 function ProgramCategory({ title, description, icon, color, videos, featuredVideo }: ProgramCategoryProps) {
     const otherVideos = videos.filter(video => video.id !== featuredVideo?.id);
     
+    // Create section ID from title
+    const sectionId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    
     return (
-        <Box sx={{ mb: 12 }}>
+        <Box id={sectionId} sx={{ mb: 12 }}>
             {/* Category Header */}
             <Box sx={{ 
                 display: 'flex', 
@@ -68,7 +75,7 @@ function ProgramCategory({ title, description, icon, color, videos, featuredVide
                         fontSize: '0.9rem'
                     }} 
                 />
-            </Box>
+        </Box>
 
             {/* Featured Video - Large */}
             {featuredVideo && (
@@ -236,14 +243,24 @@ function ProgramCategory({ title, description, icon, color, videos, featuredVide
                                 </Box>
                             </Card>
                         ))}
-                    </Box>
-                </Box>
+            </Box>
+        </Box>
             )}
         </Box>
     );
 }
 
 export default function ProgramsPage() {
+    const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; description: string } | null>(null);
+
+    const handleImageClick = (image: { src: string; title: string; description: string }) => {
+        setSelectedImage(image);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedImage(null);
+    };
+
     const programCategories = [
         {
             title: "Short Films",
@@ -387,7 +404,7 @@ export default function ProgramsPage() {
                             lineHeight: 1.2
                         }}>
                             Our Programs
-                        </Typography>
+                    </Typography>
                         <Typography sx={{ 
                             fontFamily: 'Josefin Sans', 
                             fontSize: '1.3rem', 
@@ -397,8 +414,8 @@ export default function ProgramsPage() {
                             mb: 6
                         }}>
                             Discover the diverse content that defines Bustop TV's unique voice in Zimbabwean media
-                        </Typography>
-                    </Box>
+                    </Typography>
+                </Box>
                 </Container>
             </Box>
 
@@ -415,6 +432,223 @@ export default function ProgramsPage() {
                         featuredVideo={category.featuredVideo}
                     />
                 ))}
+                
+                {/* Photography Section */}
+                <Box id="photography" sx={{ mb: 12 }}>
+                    <Box sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: 4, 
+                        mb: 6,
+                        borderBottom: '2px solid #E30613',
+                        pb: 3
+                    }}>
+                        <Box sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center',
+                            p: 2,
+                            borderRadius: '50%',
+                            background: '#E30613',
+                            color: '#fff'
+                        }}>
+                            <PhotoCamera sx={{ fontSize: 28 }} />
+                </Box>
+                        <Box sx={{ flex: 1 }}>
+                            <Typography variant="h2" sx={{ 
+                                fontFamily: 'Josefin Sans', 
+                                fontWeight: 800, 
+                                color: '#E30613',
+                                fontSize: { xs: '2rem', md: '2.5rem' },
+                                mb: 1,
+                                letterSpacing: '0.02em'
+                            }}>
+                                Photography
+                            </Typography>
+                            <Typography sx={{ 
+                                fontFamily: 'Josefin Sans', 
+                                fontSize: '1.1rem', 
+                                color: '#555', 
+                                lineHeight: 1.6,
+                                maxWidth: '600px',
+                                fontWeight: 400
+                            }}>
+                                Visual storytelling through the lens, capturing the essence of Zimbabwean life, culture, and society with artistic vision and documentary precision.
+                            </Typography>
+            </Box>
+                        <Chip 
+                            label="View Gallery" 
+                            size="small" 
+                            sx={{ 
+                                background: '#E30613', 
+                                color: '#fff', 
+                                fontFamily: 'Josefin Sans',
+                                fontWeight: 600,
+                                fontSize: '0.9rem'
+                            }} 
+                />
+            </Box>
+
+                    <Card sx={{ 
+                        position: 'relative',
+                        borderRadius: 3,
+                        overflow: 'hidden',
+                        boxShadow: '0 8px 32px rgba(227, 6, 19, 0.15)',
+                        transition: 'all 0.4s ease',
+                        border: '2px solid #E30613',
+                        '&:hover': {
+                            transform: 'translateY(-8px)',
+                            boxShadow: '0 20px 40px rgba(227, 6, 19, 0.25)'
+                        }
+                    }}>
+                        {/* Background Image */}
+                        <Box sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            zIndex: 1
+                        }}>
+                            <Image
+                                src="/images/photo/Bustop TV Photography (25).jpg"
+                                alt="Photography Background"
+                                fill
+                                style={{
+                                    objectFit: 'cover'
+                                }}
+                            />
+                        </Box>
+                        {/* Dark Overlay */}
+                        <Box sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: 'rgba(0, 0, 0, 0.3)',
+                            zIndex: 2
+                        }} />
+                        <Box sx={{ p: 6, textAlign: 'center', position: 'relative', zIndex: 3 }}>
+                                                        <Typography sx={{ 
+                                fontFamily: 'Josefin Sans', 
+                                fontWeight: 800, 
+                                fontSize: '2rem', 
+                                color: '#fff', 
+                                mb: 3,
+                                lineHeight: 1.3
+                            }}>
+                                Photography Gallery
+                </Typography>
+                            <Typography sx={{ 
+                                fontFamily: 'Josefin Sans', 
+                                fontSize: '1.1rem', 
+                                color: '#f0f0f0', 
+                                lineHeight: 1.7,
+                                fontWeight: 400,
+                                mb: 4,
+                                maxWidth: '600px',
+                                mx: 'auto'
+                            }}>
+                                Explore our comprehensive collection of photography work, featuring over 50 images that capture the essence of Zimbabwean life, culture, and society. From urban landscapes to rural traditions, each image tells a unique story.
+                    </Typography>
+                            <Link href="/gallery" style={{ textDecoration: 'none' }}>
+                                <Button 
+                                    variant="contained" 
+                                    size="large"
+                                    sx={{ 
+                                        background: '#E30613',
+                                        fontFamily: 'Josefin Sans',
+                                        fontWeight: 600,
+                                        fontSize: '1.1rem',
+                                        px: 4,
+                                        py: 2,
+                                        '&:hover': {
+                                            background: '#c4001d'
+                                        }
+                                    }}
+                                >
+                                    View Photography Gallery
+                                </Button>
+                            </Link>
+                </Box>
+                    </Card>
+            </Box>
+
+                {/* Three Preview Images */}
+                <Box sx={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+                    gap: 4,
+                    mt: 6
+                }}>
+                    {[
+                        { src: '/images/photo/Bustop TV Photography (15).jpg', title: 'Community Portraits', description: 'Faces that tell stories of resilience' },
+                        { src: '/images/photo/Bustop TV Photography (22).jpg', title: 'Urban Narratives', description: 'Stories told through city scenes' },
+                        { src: '/images/photo/Bustop TV Photography (35).jpg', title: 'Environmental Awareness', description: 'Protecting our natural heritage' }
+                    ].map((image, index) => (
+                        <Card 
+                            key={index} 
+                            onClick={() => handleImageClick(image)}
+                            sx={{ 
+                                position: 'relative',
+                                borderRadius: 3,
+                                overflow: 'hidden',
+                                boxShadow: '0 4px 20px rgba(227, 6, 19, 0.1)',
+                                transition: 'all 0.4s ease',
+                                border: '1px solid #E30613',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    transform: 'translateY(-6px)',
+                                    boxShadow: '0 12px 32px rgba(227, 6, 19, 0.2)'
+                                }
+                            }}
+                        >
+                            <Box sx={{ 
+                                position: 'relative', 
+                                height: '200px',
+                                background: '#f5f5f5'
+                            }}>
+                                <Image
+                                    src={image.src}
+                                    alt={image.title}
+                                    fill
+                                    style={{ 
+                                        objectFit: 'cover'
+                                    }}
+                                />
+                                <Box sx={{
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                                    color: '#fff',
+                                    p: 3
+                                }}>
+                                    <Typography sx={{ 
+                                        fontFamily: 'Josefin Sans', 
+                                        fontWeight: 700, 
+                                        fontSize: '1rem', 
+                                        color: '#fff', 
+                                        mb: 1,
+                                        lineHeight: 1.3
+                                    }}>
+                                        {image.title}
+                                    </Typography>
+                                    <Typography sx={{ 
+                                        fontFamily: 'Josefin Sans', 
+                                        fontSize: '0.85rem', 
+                                        color: '#f0f0f0', 
+                                        lineHeight: 1.4,
+                                        fontWeight: 400
+                                    }}>
+                                        {image.description}
+                </Typography>
+                                </Box>
+                            </Box>
+                        </Card>
+                    ))}
+                </Box>
             </Container>
 
             {/* Call to Action */}
@@ -444,7 +678,7 @@ export default function ProgramsPage() {
                             mb: 6
                         }}>
                             Subscribe to our channel for the latest content and updates from Bustop TV
-                        </Typography>
+                </Typography>
                         <Button 
                             variant="outlined" 
                             size="large"
@@ -463,10 +697,110 @@ export default function ProgramsPage() {
                             }}
                         >
                             Subscribe Now
-                        </Button>
-                    </Box>
+                    </Button>
+                </Box>
                 </Container>
             </Box>
+
+            {/* Image Modal/Lightbox */}
+            <Modal
+                open={!!selectedImage}
+                onClose={handleCloseModal}
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    p: 4
+                }}
+            >
+                <Fade in={!!selectedImage}>
+                    <Box sx={{
+                        position: 'relative',
+                        maxWidth: '90vw',
+                        maxHeight: '90vh',
+                        bgcolor: 'background.paper',
+                        borderRadius: 3,
+                        boxShadow: '0 25px 80px rgba(0,0,0,0.5)',
+                        overflow: 'hidden',
+                        outline: 'none'
+                    }}>
+                        {/* Close Button */}
+                        <IconButton
+                            onClick={handleCloseModal}
+                            sx={{
+                                position: 'absolute',
+                                top: 16,
+                                right: 16,
+                                bgcolor: 'rgba(0,0,0,0.7)',
+                                color: '#fff',
+                                zIndex: 10,
+                                '&:hover': {
+                                    bgcolor: 'rgba(227, 6, 19, 0.9)'
+                                }
+                            }}
+                        >
+                            <Close />
+                        </IconButton>
+
+                        {/* Image */}
+                        {selectedImage && (
+                            <Box sx={{
+                                position: 'relative',
+                                width: '100%',
+                                height: 'auto',
+                                maxHeight: '80vh'
+                            }}>
+                                <Image
+                                    src={selectedImage?.src || ''}
+                                    alt={selectedImage?.title || ''}
+                                    width={1200}
+                                    height={800}
+                                    style={{
+                                        width: '100%',
+                                        height: 'auto',
+                                        maxHeight: '80vh',
+                                        objectFit: 'contain'
+                                    }}
+                                />
+                            </Box>
+                        )}
+
+                        {/* Image Info */}
+                        {selectedImage && (
+                            <Box sx={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                background: 'linear-gradient(transparent, rgba(0,0,0,0.9))',
+                                color: '#fff',
+                                p: 4
+                            }}>
+                                <Typography sx={{ 
+                                    fontFamily: 'Josefin Sans', 
+                                    fontWeight: 800, 
+                                    fontSize: '1.8rem', 
+                                    color: '#fff', 
+                                    mb: 2,
+                                    lineHeight: 1.2
+                                }}>
+                                    {selectedImage?.title || ''}
+                                </Typography>
+                                <Typography sx={{ 
+                                    fontFamily: 'Josefin Sans', 
+                                    fontSize: '1.1rem', 
+                                    color: '#f0f0f0', 
+                                    lineHeight: 1.6,
+                                    fontWeight: 400,
+                                    mb: 2
+                                }}>
+                                    {selectedImage?.description || ''}
+                                </Typography>
+                            </Box>
+                        )}
+                    </Box>
+                </Fade>
+            </Modal>
         </Box>
     );
 } 

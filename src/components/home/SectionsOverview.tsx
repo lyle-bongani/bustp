@@ -8,6 +8,16 @@ const sections = [
         href: '/about',
     },
     {
+        title: 'Programs',
+        description: 'Explore our diverse range of programs and shows.',
+        href: '/programs',
+    },
+    {
+        title: 'Gallery',
+        description: 'View our photography and visual storytelling work.',
+        href: '/gallery',
+    },
+    {
         title: 'Awards',
         description: 'Discover the awards and recognition Bustop TV has received.',
         href: '/awards',
@@ -18,25 +28,15 @@ const sections = [
         href: '/clients',
     },
     {
-        title: 'Contact',
-        description: 'Get in touch with the Bustop TV team for inquiries or collaborations.',
-        href: '/contact',
-    },
-    {
         title: 'News',
         description: 'Stay updated with the latest news and updates from Bustop TV.',
         href: 'https://bustop.tv',
         external: true,
     },
     {
-        title: 'Programs',
-        description: 'Explore our diverse range of programs and shows.',
-        href: '/programs',
-    },
-    {
-        title: 'Projects',
-        description: 'Check out our featured projects and creative work.',
-        href: '/projects',
+        title: 'Contact',
+        description: 'Get in touch with the Bustop TV team for inquiries or collaborations.',
+        href: '/contact',
     },
 ];
 

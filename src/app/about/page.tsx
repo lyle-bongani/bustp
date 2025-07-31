@@ -2,9 +2,10 @@ import HeroSection from './components/HeroSection';
 import OurStory from './components/OurStory';
 import WhatWeDo from './components/WhatWeDo';
 import MissionVision from './components/MissionVision';
-import MeetTheTeam from './components/MeetTheTeam';
-import ImpactReach from './components/ImpactReach';
-import PressRecognition from './components/PressRecognition';
+import StrategicPlan from './components/StrategicPlan';
+import CoreValues from './components/CoreValues';
+import AudienceReach from './components/AudienceReach';
+import MeetTheTeam from './components/OrganizationalStructure';
 import AboutCTA from './components/AboutCTA';
 
 export default function AboutPage() {
@@ -12,11 +13,12 @@ export default function AboutPage() {
         <main>
             <HeroSection />
             <OurStory />
-            <WhatWeDo />
             <MissionVision />
+            <WhatWeDo />
+            <StrategicPlan />
+            <CoreValues />
+            <AudienceReach />
             <MeetTheTeam />
-            <ImpactReach />
-            <PressRecognition />
             <AboutCTA />
         </main>
     );
