@@ -177,7 +177,7 @@ function ProgramCategory({ title, description, icon, videos, featuredVideo }: Pr
                         gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
                         gap: 4
                     }}>
-                        {otherVideos.map((video, index) => (
+                        {otherVideos.map((video) => (
                             <Card key={video.id} sx={{ 
                                 background: 'linear-gradient(135deg, #fff 0%, #fafafa 100%)',
                                 borderRadius: 3,
