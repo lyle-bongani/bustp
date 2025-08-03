@@ -1,16 +1,10 @@
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
   images: {
-    domains: [
-      "www.bustop.tv",
-      "www.econet.co.zw",
-      "www.gloriafood.com",
-      "www.unilever.com",
-      "www.stanbicbank.co.zw",
-      "okziminvestor.com",
-      "www.ecocash.co.zw"
-    ],
+    domains: ["www.bustop.tv"],
   },
 };
 

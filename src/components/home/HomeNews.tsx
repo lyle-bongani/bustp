@@ -27,14 +27,14 @@ export default function HomeNews() {
         );
         const data = await res.json();
         if (!data.items) throw new Error('No news found');
-        const newsItems: NewsItem[] = data.items.slice(0, 5).map((item: any) => ({
+        const newsItems: NewsItem[] = data.items.slice(0, 5).map((item: { title: string; link: string; pubDate?: string; date_published?: string; description?: string; summary?: string }) => ({
           title: item.title,
           link: item.link,
           pubDate: item.pubDate || item.date_published || '',
           description: item.description || item.summary || '',
         }));
         setNews(newsItems);
-      } catch (err) {
+      } catch {
         setError('Failed to fetch news.');
       } finally {
         setLoading(false);

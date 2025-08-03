@@ -250,36 +250,6 @@ function ProgramCategory({ title, description, icon, videos, featuredVideo }: Pr
     );
 }
 
-export const metadata = {
-  title: "Programs & Shows | Bustop TV",
-  description: "Explore Bustop TV's programs and shows. Watch satire, comedy, news, and social impact content from Zimbabwe's leading creators.",
-  alternates: {
-    canonical: "https://bustop.org/programs",
-  },
-  openGraph: {
-    title: "Programs & Shows | Bustop TV",
-    description: "Explore Bustop TV's programs and shows. Watch satire, comedy, news, and social impact content from Zimbabwe's leading creators.",
-    url: "https://bustop.org/programs",
-    siteName: "Bustop TV",
-    images: [
-      {
-        url: "https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png",
-        width: 311,
-        height: 311,
-        alt: "Bustop TV Logo",
-      },
-    ],
-    locale: "en_ZW",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@bustoptv",
-    title: "Programs & Shows | Bustop TV",
-    description: "Explore Bustop TV's programs and shows. Watch satire, comedy, news, and social impact content from Zimbabwe's leading creators.",
-    images: ["https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png"],
-  },
-};
 export default function ProgramsPage() {
     const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; description: string } | null>(null);
 
