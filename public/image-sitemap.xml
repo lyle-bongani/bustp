@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://bustop.org/</loc>
+    <image:image>
+      <image:loc>https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png</image:loc>
+      <image:title>Bustop TV Logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bustop.org/about</loc>
+    <image:image>
+      <image:loc>https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png</image:loc>
+      <image:title>Bustop TV Logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bustop.org/awards</loc>
+    <image:image>
+      <image:loc>https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png</image:loc>
+      <image:title>Bustop TV Logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bustop.org/clients</loc>
+    <image:image>
+      <image:loc>https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png</image:loc>
+      <image:title>Bustop TV Logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bustop.org/programs</loc>
+    <image:image>
+      <image:loc>https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png</image:loc>
+      <image:title>Bustop TV Logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bustop.org/contact</loc>
+    <image:image>
+      <image:loc>https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png</image:loc>
+      <image:title>Bustop TV Logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bustop.org/gallery</loc>
+    <!-- Gallery images -->
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(1).jpg</image:loc>
+      <image:title>Bustop TV Photography 1</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(2).jpg</image:loc>
+      <image:title>Bustop TV Photography 2</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(3).jpg</image:loc>
+      <image:title>Bustop TV Photography 3</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(4).jpg</image:loc>
+      <image:title>Bustop TV Photography 4</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(5).jpg</image:loc>
+      <image:title>Bustop TV Photography 5</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(6).jpg</image:loc>
+      <image:title>Bustop TV Photography 6</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(7).jpg</image:loc>
+      <image:title>Bustop TV Photography 7</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(8).jpg</image:loc>
+      <image:title>Bustop TV Photography 8</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(9).jpg</image:loc>
+      <image:title>Bustop TV Photography 9</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/photo/Bustop%20TV%20Photography%20(10).jpg</image:loc>
+      <image:title>Bustop TV Photography 10</image:title>
+    </image:image>
+    <!-- ...all other photo images... -->
+    <!-- Pics images -->
+    <image:image>
+      <image:loc>https://bustop.org/images/pics/1358210.webp</image:loc>
+      <image:title>1358210</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/pics/BusTop%20TV%20Clients%202.jpg</image:loc>
+      <image:title>BusTop TV Clients 2</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/pics/BusTop%20TV%20Clients.webp</image:loc>
+      <image:title>BusTop TV Clients</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bustop.org/images/pics/zimbabwe%20media%20wards.webp</image:loc>
+      <image:title>Zimbabwe Media Awards</image:title>
+    </image:image>
+    <!-- Team images removed as requested -->
+  </url>
+</urlset>

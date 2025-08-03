@@ -73,13 +73,13 @@ const items = [
 export default function WhatWeDo() {
     return (
         <Box component="section" sx={{ width: '100%', background: '#fff', py: { xs: 6, md: 10 }, px: 2 }}>
-            <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '2rem', md: '2.2rem' }, color: '#E30613', mb: 4, textAlign: 'center' }}>
+            <Typography variant="h2" sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, fontSize: { xs: '1.8rem', sm: '2rem', md: '2.2rem' }, color: '#E30613', mb: 4, textAlign: 'center', px: 2 }}>
                 What We Do
             </Typography>
-            <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.12rem', color: '#222', mb: 4, maxWidth: 700, mx: 'auto', textAlign: 'center' }}>
+            <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: { xs: '1rem', sm: '1.1rem', md: '1.12rem' }, color: '#222', mb: 4, maxWidth: 700, mx: 'auto', textAlign: 'center', px: 2, lineHeight: 1.6 }}>
                 We create content that entertains, educates, and provokes thought—using humor to break barriers and spark conversations. Our work blends satire, documentary, and real-life stories to reflect the Zimbabwean experience.
             </Typography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(3, 1fr)' }, gap: 3, maxWidth: 1200, mx: 'auto' }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: { xs: 2, sm: 3 }, maxWidth: 1200, mx: 'auto', px: { xs: 1, sm: 2 } }}>
                 {items.map((item: { icon: React.ReactNode; label: string; desc: string; sectionId: string }, idx) => (
                     <Link 
                         key={idx} 
@@ -112,7 +112,7 @@ export default function WhatWeDo() {
                     </Link>
                 ))}
             </Box>
-            <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.08rem', color: '#444', mt: 4, textAlign: 'center', maxWidth: 700, mx: 'auto' }}>
+            <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: { xs: '0.95rem', sm: '1rem', md: '1.08rem' }, color: '#444', mt: 4, textAlign: 'center', maxWidth: 700, mx: 'auto', px: 2, lineHeight: 1.6 }}>
                 Whether it&apos;s a viral skit or a powerful interview, Bustop TV&apos;s content inspires laughter, dialogue, and change across generations.
             </Typography>
         </Box>

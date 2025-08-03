@@ -87,7 +87,7 @@ export default function CoreValues() {
                         ref={carouselRef}
                         sx={{ 
                             display: 'flex',
-                            gap: 3,
+                            gap: { xs: 2, sm: 3 },
                             overflowX: 'auto',
                             scrollBehavior: 'smooth',
                             scrollbarWidth: 'none',
@@ -100,9 +100,13 @@ export default function CoreValues() {
                             '&:active': {
                                 cursor: 'grabbing'
                             },
-                            px: 8,
-                            mx: -8,
-                            minHeight: '280px'
+                            px: { xs: 4, sm: 8 },
+                            mx: { xs: -4, sm: -8 },
+                            minHeight: { xs: '200px', sm: '280px' },
+                            scrollSnapType: 'x mandatory',
+                            '& > *': {
+                                scrollSnapAlign: 'center'
+                            }
                         }}
                         onMouseDown={handleMouseDown}
                         onMouseMove={handleMouseMove}
@@ -119,15 +123,15 @@ export default function CoreValues() {
                             { number: '05', title: 'Influential', desc: 'To have major impact in communities, on policy and the world with our content.' }
                         ].map((item, index) => (
                             <Box key={index} sx={{ 
-                                width: { xs: '180px', sm: '200px', md: '220px' },
-                                height: { xs: '180px', sm: '200px', md: '220px' },
+                                width: { xs: '160px', sm: '200px', md: '220px' },
+                                height: { xs: '160px', sm: '200px', md: '220px' },
                                 background: 'linear-gradient(135deg, #E30613 0%, #c70510 100%)',
                                 borderRadius: '50%',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                p: 3,
+                                p: { xs: 2, sm: 3 },
                                 textAlign: 'center',
                                 color: '#fff',
                                 transition: 'box-shadow 0.3s ease',
@@ -184,7 +188,7 @@ export default function CoreValues() {
                     <Box 
                         sx={{ 
                             display: 'flex',
-                            gap: 3,
+                            gap: { xs: 2, sm: 3 },
                             overflowX: 'auto',
                             scrollBehavior: 'smooth',
                             scrollbarWidth: 'none',
@@ -197,9 +201,13 @@ export default function CoreValues() {
                             '&:active': {
                                 cursor: 'grabbing'
                             },
-                            px: 8,
-                            mx: -8,
-                            minHeight: '280px'
+                            px: { xs: 4, sm: 8 },
+                            mx: { xs: -4, sm: -8 },
+                            minHeight: { xs: '200px', sm: '280px' },
+                            scrollSnapType: 'x mandatory',
+                            '& > *': {
+                                scrollSnapAlign: 'center'
+                            }
                         }}
                         onMouseDown={handleMouseDown}
                         onMouseMove={handleMouseMove}
@@ -219,15 +227,15 @@ export default function CoreValues() {
                             { number: '08', title: 'Brand image: fearless', desc: 'Known for bold, unapologetic content that challenges norms.' }
                         ].map((item, index) => (
                             <Box key={index} sx={{ 
-                                width: { xs: '180px', sm: '200px', md: '220px' },
-                                height: { xs: '180px', sm: '200px', md: '220px' },
+                                width: { xs: '160px', sm: '200px', md: '220px' },
+                                height: { xs: '160px', sm: '200px', md: '220px' },
                                 background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
                                 borderRadius: '50%',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                p: 3,
+                                p: { xs: 2, sm: 3 },
                                 textAlign: 'center',
                                 color: '#fff',
                                 transition: 'box-shadow 0.3s ease',
@@ -239,7 +247,7 @@ export default function CoreValues() {
                                 <Typography sx={{ 
                                     fontFamily: 'Josefin Sans', 
                                     fontWeight: 900, 
-                                    fontSize: { xs: '1.5rem', md: '2rem' }, 
+                                    fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' }, 
                                     mb: 1,
                                     opacity: 0.8
                                 }}>
@@ -248,7 +256,7 @@ export default function CoreValues() {
                                 <Typography sx={{ 
                                     fontFamily: 'Josefin Sans', 
                                     fontWeight: 700, 
-                                    fontSize: { xs: '0.9rem', md: '1rem' }, 
+                                    fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' }, 
                                     mb: 1,
                                     lineHeight: 1.2
                                 }}>
@@ -256,7 +264,7 @@ export default function CoreValues() {
                                 </Typography>
                                 <Typography sx={{ 
                                     fontFamily: 'Josefin Sans', 
-                                    fontSize: { xs: '0.7rem', md: '0.8rem' }, 
+                                    fontSize: { xs: '0.65rem', sm: '0.7rem', md: '0.8rem' }, 
                                     opacity: 0.9,
                                     lineHeight: 1.3
                                 }}>

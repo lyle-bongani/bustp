@@ -1,14 +1,19 @@
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import StarIcon from '@mui/icons-material/Star';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import DiamondIcon from '@mui/icons-material/Diamond';
+import PublicIcon from '@mui/icons-material/Public';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
-import PublicIcon from '@mui/icons-material/Public';
 import Image from 'next/image';
 import React from 'react';
 
 const awards = [
     {
         icon: <EmojiEventsIcon sx={{ fontSize: 40, color: '#FFD700', bgcolor: 'rgba(255,215,0,0.12)', borderRadius: '50%', p: 1 }} />, // gold
+        rightIcon: <StarIcon sx={{ fontSize: 90, color: '#FFD700', bgcolor: 'rgba(255,215,0,0.12)', borderRadius: '50%', p: 1 }} />, // star
         title: 'Best Online Content Creator',
         org: 'National Arts Merit Awards (NAMA)',
         year: '2021',
@@ -18,6 +23,7 @@ const awards = [
     },
     {
         icon: <LiveTvIcon sx={{ fontSize: 40, color: '#FFD700', bgcolor: 'rgba(255,215,0,0.12)', borderRadius: '50%', p: 1 }} />, // gold
+        rightIcon: <WorkspacePremiumIcon sx={{ fontSize: 90, color: '#E30613', bgcolor: 'rgba(227,6,19,0.08)', borderRadius: '50%', p: 1 }} />, // premium
         title: 'Digital Trailblazer Award',
         org: 'Zim Digital Media Awards',
         year: '2022',
@@ -27,6 +33,7 @@ const awards = [
     },
     {
         icon: <PublicIcon sx={{ fontSize: 40, color: '#FFD700', bgcolor: 'rgba(255,215,0,0.12)', borderRadius: '50%', p: 1 }} />, // gold
+        rightIcon: <DiamondIcon sx={{ fontSize: 90, color: '#1976d2', bgcolor: 'rgba(25,118,210,0.08)', borderRadius: '50%', p: 1 }} />, // diamond
         title: 'African Creators Spotlight',
         org: 'BBC Focus on Africa',
         year: '2023',
@@ -110,9 +117,10 @@ export default function MajorAwards() {
                                 display: 'flex',
                                 alignItems: 'center',
                                 order: { xs: 3, md: 3 },
-                                justifyContent: { xs: 'flex-start', md: 'flex-start' },
+                                justifyContent: 'center',
                             }}>
-                                <Image src={award.photo} alt={award.title} width={155} height={120} style={{ borderRadius: 10, objectFit: 'cover', width: '100%', height: 120, background: '#fff' }} />
+                                {/* Relevant icon for each award on the right */}
+                                {award.rightIcon}
                             </Box>
                         </Box>
                     ))}

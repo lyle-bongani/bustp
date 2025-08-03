@@ -2,7 +2,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Person } from '@mui/icons-material';
+import Image from 'next/image';
 
 export default function MeetTheTeam() {
     // Actual team data
@@ -10,55 +10,55 @@ export default function MeetTheTeam() {
         {
             name: "LUCKY AARONI",
             role: "Founder & Producer",
-            image: "/images/team/lucky-aaroni.jpg", // Replace with actual image path
+            image: "/images/team/LUCKY AARONI.webp",
             description: "Leading the vision and strategic direction of Bustop TV, overseeing all production processes and content delivery."
         },
         {
             name: "LEWIS AARONI",
             role: "Director of Photography/Video Editor",
-            image: "/images/team/lewis-aaroni.jpg", // Replace with actual image path
+            image: "/images/team/LEWIS AARONI.webp",
             description: "Creating compelling visual narratives and ensuring post-production excellence across all content."
         },
         {
             name: "KUDAKWASHE VHENGE",
             role: "News Editor",
-            image: "/images/team/kudakwashe-vhenge.jpg", // Replace with actual image path
+            image: "/images/team/KUDAKWASHE VHENGE.webp",
             description: "Ensuring quality and accuracy in all editorial content with strategic oversight of news coverage."
         },
         {
             name: "DERECK NZIYAKWI",
             role: "Creative Writer | Director | Actor",
-            image: "/images/team/dereck-nziyakwi.jpg", // Replace with actual image path
+            image: "/images/team/DERECK NZIYAKWI.webp",
             description: "Multi-talented creative professional driving storytelling excellence and on-screen performance."
         },
         {
             name: "MELISSA MWEDZI",
             role: "Research, Monitoring & Evaluation Officer",
-            image: "/images/team/melissa-mwedzi.jpg", // Replace with actual image path
+            image: "/images/team/MELISSA MWEDZI.webp",
             description: "Overseeing research initiatives and evaluating the impact of our content on audiences."
         },
         {
             name: "SILVIA TSITSI MUKWINDIDZA",
             role: "Admin & Communication Officer",
-            image: "/images/team/silvia-mukwindidza.jpg", // Replace with actual image path
+            image: "/images/team/SILVIA TSITSI MUKWINDIDZA.webp",
             description: "Managing administrative operations and external communications for Bustop TV."
         },
         {
             name: "EUNICIE MASVOSVA",
             role: "Admin & Finance Officer",
-            image: "/images/team/eunicie-masvosva.jpg", // Replace with actual image path
+            image: "/images/team/EUNICIE MASVOSVA.webp",
             description: "Overseeing financial management and administrative processes to ensure organizational efficiency."
         },
         {
             name: "SAMANTHA KUREYA",
             role: "Actress | Presenter",
-            image: "/images/team/samantha-kureya.jpg", // Replace with actual image path
+            image: "/images/team/SAMANTHA KUREYA.webp",
             description: "Bringing stories to life through compelling on-screen performances and engaging presentations."
         },
         {
             name: "SHARON CHIDEU",
             role: "Actress & Presenter",
-            image: "/images/team/sharon-chideu.jpg", // Replace with actual image path
+            image: "/images/team/SHARON CHIDEU.webp",
             description: "Delivering authentic performances and connecting with audiences through dynamic presentations."
         }
     ];
@@ -120,24 +120,28 @@ export default function MeetTheTeam() {
                             textAlign: 'center',
                             p: 3
                         }}>
-                            {/* Image Placeholder */}
+                            {/* Team Member Image */}
                             <Box sx={{ 
-                                width: 120,
-                                height: 120,
-                                borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #E30613 0%, #FFD700 100%)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
+                                width: 200,
+                                height: 250,
+                                borderRadius: 3,
+                                overflow: 'hidden',
                                 mx: 'auto',
                                 mb: 3,
                                 boxShadow: '0 8px 25px rgba(227, 6, 19, 0.3)',
-                                '& .MuiSvgIcon-root': {
-                                    fontSize: '3rem',
-                                    color: '#fff'
-                                }
+                                border: '2px solid #E30613'
                             }}>
-                                <Person />
+                                <Image
+                                    src={member.image}
+                                    alt={member.name}
+                                    width={200}
+                                    height={250}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover'
+                                    }}
+                                />
                             </Box>
 
                             {/* Member Info */}

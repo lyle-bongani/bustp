@@ -17,8 +17,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bustop",
-  description: "A Next.js project for Bustop.",
+  title: "Bustop TV | Zimbabwe's Leading Satire & Entertainment Platform",
+  description: "Bustop TV is Zimbabwe's top online satire and entertainment platform. Watch, laugh, and engage with our award-winning content, news, and social impact programs.",
+  metadataBase: new URL("https://bustop.org/"),
+  alternates: {
+    canonical: "https://bustop.org/",
+  },
+  openGraph: {
+    title: "Bustop TV | Zimbabwe's Leading Satire & Entertainment Platform",
+    description: "Bustop TV is Zimbabwe's top online satire and entertainment platform. Watch, laugh, and engage with our award-winning content, news, and social impact programs.",
+    url: "https://bustop.org/",
+    siteName: "Bustop TV",
+    images: [
+      {
+        url: "https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png",
+        width: 311,
+        height: 311,
+        alt: "Bustop TV Logo",
+      },
+    ],
+    locale: "en_ZW",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@bustoptv",
+    title: "Bustop TV | Zimbabwe's Leading Satire & Entertainment Platform",
+    description: "Bustop TV is Zimbabwe's top online satire and entertainment platform. Watch, laugh, and engage with our award-winning content, news, and social impact programs.",
+    images: ["https://bustop.org/images/logos/Bustop%20TV%20Logo%20311px.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

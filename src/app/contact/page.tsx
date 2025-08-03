@@ -1,3 +1,11 @@
+export const metadata = {
+  title: "Contact Bustop TV | Get in Touch",
+  description: "Contact Bustop TV for partnerships, media, or general inquiries. Reach out to Zimbabwe's leading satire and entertainment platform.",
+  alternates: {
+    canonical: "https://bustop.org/contact",
+  },
+};
+
 "use client";
 
 import Box from '@mui/material/Box';
@@ -202,4 +210,5 @@ export default function ContactPage() {
             </Box>
         </Box>
     );
-} 
+}
+                       

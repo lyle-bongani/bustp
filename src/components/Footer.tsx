@@ -1,3 +1,4 @@
+"use client";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -6,8 +7,18 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Link from 'next/link';
 import Image from 'next/image';
+import React, { useState } from 'react';
+import Dialog from '@mui/material/Dialog';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function Footer() {
+    const [open, setOpen] = useState(false);
+    const [activeImg, setActiveImg] = useState('');
+    const handleOpen = (img: string) => {
+        setActiveImg(img);
+        setOpen(true);
+    };
+    const handleClose = () => setOpen(false);
     return (
         <Box component="footer" sx={{ backgroundColor: '#FFD700', color: '#222', py: 4, px: 2 }}>
             {/* Logo Row */}
@@ -21,6 +32,8 @@ export default function Footer() {
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                         <Link href="/" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Home</Link>
                         <Link href="/about" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>About</Link>
+                        <Link href="/programs" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Programs</Link>
+                        <Link href="/gallery" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Gallery</Link>
                         <Link href="/awards" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Awards</Link>
                         <Link href="/clients" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Clients</Link>
                         <Link href="/contact" style={{ color: '#222', textDecoration: 'none', fontFamily: 'Josefin Sans' }}>Contact</Link>
@@ -42,11 +55,23 @@ export default function Footer() {
                 {/* Gallery View */}
                 <Box sx={{ flex: 1 }}>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontWeight: 700, mb: 1, color: '#E30613' }}>Gallery View</Typography>
-                    <Link href="/awards" style={{ display: 'inline-block', borderRadius: 8, overflow: 'hidden', border: '2px solid #E30613', width: 90, height: 60 }}>
-                        <Image src="/images/pics/zimbabwe media wards.webp" alt="Awards Gallery" width={90} height={60} style={{ objectFit: 'cover', display: 'block' }} />
-                    </Link>
+                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+                        {[1,2,3,4,5,6].map(num => (
+                            <Box key={num} component="button" onClick={() => handleOpen(`/images/photo/Bustop TV Photography (${num}).jpg`)} sx={{ p: 0, m: 0, background: 'none', cursor: 'pointer', borderRadius: 0, overflow: 'hidden', border: '2px solid #E30613', width: 90, height: 60 }}>
+                                <Image src={`/images/photo/Bustop TV Photography (${num}).jpg`} alt={`Gallery Preview ${num}`} width={90} height={60} style={{ objectFit: 'cover', display: 'block' }} />
+                            </Box>
+                        ))}
+                    </Box>
+                    <Dialog open={open} onClose={handleClose} maxWidth="md" PaperProps={{ sx: { background: '#000', boxShadow: 24, borderRadius: 2, p: 2 } }}>
+                        <Box sx={{ position: 'relative', width: '100%', height: '100%', textAlign: 'center' }}>
+                            <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 8, right: 8, color: '#fff', zIndex: 2 }}><CloseIcon /></IconButton>
+                            {activeImg && (
+                                <Image src={activeImg} alt="Gallery Full" width={800} height={500} style={{ maxWidth: '90vw', maxHeight: '80vh', objectFit: 'contain', borderRadius: 8, margin: '0 auto' }} />
+                            )}
+                        </Box>
+                    </Dialog>
                     <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '0.95rem', mt: 1 }}>
-                        <a href="/awards" style={{ color: '#E30613', textDecoration: 'underline' }}>View Awards Gallery</a>
+                        <a href="/gallery" style={{ color: '#E30613', textDecoration: 'underline' }}>View Photography Gallery</a>
                     </Typography>
                 </Box>
             </Box>
@@ -58,7 +83,8 @@ export default function Footer() {
                 </Box>
             </Box>
             <Typography variant="body2" sx={{ fontFamily: 'Josefin Sans', mt: 2, textAlign: 'center', color: '#E30613' }}>
-                &copy; {new Date().getFullYear()} Bustop TV. All rights reserved.
+                &copy; {new Date().getFullYear()} Bustop TV. All rights reserved. &nbsp;|&nbsp;
+                Designed by <a href="https://www.spemedia.co.zw/" target="_blank" rel="noopener" style={{ color: '#E30613', textDecoration: 'underline' }}>speMedia</a>
             </Typography>
         </Box>
     );

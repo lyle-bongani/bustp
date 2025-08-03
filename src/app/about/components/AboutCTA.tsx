@@ -11,11 +11,11 @@ export default function AboutCTA() {
             <Typography sx={{ fontFamily: 'Josefin Sans', fontSize: '1.15rem', color: '#222', mb: 4, maxWidth: 700, mx: 'auto' }}>
                 Follow us, share the vision, and let’s tell Zimbabwe’s story together.
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center', mb: 2 }}>
-                <Button href="https://bustop.tv" target="_blank" rel="noopener noreferrer" variant="contained" sx={{ background: '#E30613', color: '#fff', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: '1.1rem', px: 4, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD600', color: '#232526' } }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center', mb: 2, px: 2 }}>
+                <Button href="https://bustop.tv" target="_blank" rel="noopener noreferrer" variant="contained" sx={{ background: '#E30613', color: '#fff', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: { xs: '1rem', sm: '1.1rem' }, px: { xs: 3, sm: 4 }, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD600', color: '#232526' } }}>
                     Watch Our Skits
                 </Button>
-                <Button href="https://facebook.com/bustoptv" target="_blank" rel="noopener" variant="outlined" sx={{ borderColor: '#E30613', color: '#E30613', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: '1.1rem', px: 4, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD600', borderColor: '#FFD600', color: '#232526' } }}>
+                <Button href="https://facebook.com/bustoptv" target="_blank" rel="noopener" variant="outlined" sx={{ borderColor: '#E30613', color: '#E30613', fontWeight: 700, borderRadius: 8, textTransform: 'none', fontFamily: 'Josefin Sans', fontSize: { xs: '1rem', sm: '1.1rem' }, px: { xs: 3, sm: 4 }, py: 1.5, boxShadow: 'none', '&:hover': { background: '#FFD600', borderColor: '#FFD600', color: '#232526' } }}>
                     Follow on Social Media
                 </Button>
             </Box>
